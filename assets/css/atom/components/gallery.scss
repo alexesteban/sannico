@@ -1,0 +1,12 @@
+.gallery {
+  overflow: hidden;
+  .image {
+    width:150px;
+    float: left;
+    margin:1em;
+    border:1px solid silver;
+    img {
+      width:100%;
+    }
+  }
+}

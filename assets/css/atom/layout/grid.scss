@@ -1,0 +1,23 @@
+.a-logo-wrapper,
+.a-menu-wrapper {
+  float: left;
+  margin:0;
+  padding: 0;
+}
+.a-logo-wrapper{
+    width:30%;
+}
+.a-menu-wrapper{
+    width:70%;
+}
+
+.a-section {
+  max-width:1200px;
+  margin:0 auto;
+  overflow: hidden;
+}
+
+.a-section--background-white {
+  background: #fff;
+  padding:1em;
+}

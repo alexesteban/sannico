@@ -1,0 +1,54 @@
+.a-button-form {
+  text-align: center;
+  padding:1em 0;
+}
+
+.a-button {
+  font-size: 16px;
+  padding:.5em 1em;
+  color:#FFF;
+  border:0;
+  text-decoration: none;
+}
+
+.button--color-blue {
+  background-color: $blue;
+}
+
+.button--color-green {
+  background-color: $green;
+}
+
+.button--color-red {
+  background-color: $red;
+}
+
+.button--color-violet {
+  background-color: $violet;
+}
+
+.button--color-yellow {
+  background-color: $yellow;
+}
+
+.a-forgot-password {
+  text-align-last: right;
+  margin:0;
+  padding:0;
+  a {
+    font-size: 12px;
+  }
+}
+
+.a-button__add-form {
+  display: block;
+  text-align: right;
+  span {
+    font-size: 12px;
+  }
+}
+
+.a-button__back {
+  font-size: 12px;
+  padding: .5em 1em;
+}

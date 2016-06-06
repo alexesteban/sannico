@@ -1,0 +1,41 @@
+{
+  "css": {
+    "debug":[
+      "assets/css/app.scss"
+    ],
+    "release":[
+      "assets/css/app.css"
+    ]
+  },
+  "js":{
+    "release":[
+      "assets/js/app.min.js"
+    ],
+    "debug":{
+      "libs":[
+      ],
+      "core":[
+        "assets/js/project.js",
+        "assets/js/routes.js",
+        "assets/js/controllers/home.js",
+        "assets/js/controllers/header.js",
+        "assets/js/controllers/footer.js",
+        "assets/js/controllers/nosotros.js",
+        "assets/js/controllers/cronograma.js",
+        "assets/js/controllers/docentes.js",
+        "assets/js/controllers/galeria.js",
+        "assets/js/controllers/login.js",
+        "assets/js/controllers/evento.js",
+        "assets/js/controllers/album.js",
+        "assets/js/controllers/dashboard.js",
+        "assets/js/controllers/docentes_adm.js",
+        "assets/js/controllers/perfil_edit.js",
+        "assets/js/directives/header.js",
+        "assets/js/directives/footer.js",
+        "assets/js/directives/gallery.js",
+        "assets/js/directives/tabs.js",
+        "assets/js/directives/back-button.js"
+      ]
+    }
+  }
+}

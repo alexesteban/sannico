@@ -1,0 +1,173 @@
+.a-card {
+  position: relative;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
+  transition: box-shadow .25s;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  overflow: hidden;
+  min-width:320px;
+}
+
+.a-card__flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.a-card__flex {
+  flex:1;
+  margin: 1em;
+}
+
+.a-card-wrapper {
+  margin:1em;
+}
+
+.a-card-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.a-card-header__photo {
+  width:60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  img {
+    width:100%;
+  }
+}
+
+.a-card-header__title-photo {
+  display: inline-block;
+  width:100%;
+  h1,h2,h3 {
+    line-height: 1.2em;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    font-size: 20px;
+    color: $blue;
+    font-weight: bold;
+  }
+  h2 {
+    font-size:16px;
+    color: gray;
+    font-weight: 300;
+  }
+  h3 {
+    font-size:12px;
+    color: silver;
+  }
+  .light {
+    font-weight: 400;
+  }
+}
+
+.a-card-header__pin-right {
+  position: absolute;
+  top:0;
+  right:0;
+  font-size: 13px;
+}
+
+.a-card-body {
+  margin-top:1em;
+  overflow: hidden;
+  p {
+    font-size:16px;
+    color:#868686;
+    text-align: justify;
+  }
+}
+
+.a-card-photo {
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.a-card-photo__title {
+  text-align: center;
+  color: silver;
+  font-size:18px;
+  font-weight: bold;
+  padding:.4em 0;
+  display: block;
+}
+
+.a-card__image {
+  max-height: 250px;
+  overflow: hidden;
+  img {
+    width:100%;
+  }
+}
+
+.a-card__image__circular {
+  width: 250px;
+  margin:0 auto;
+  border-radius: 50%;
+}
+
+.a-card--heigth-240 {
+  height: 240px;
+}
+
+.a-card--heigth-500 {
+  height: 505px;
+}
+
+.a-card__icon,
+.a-card__list {
+  flex:1;
+}
+
+.a-card__icon {
+  text-align: center;
+  i {
+    font-size: 90px;
+    color:#717171;
+    line-height: 1em;
+  }
+}
+
+.a-card__icon .a-state{
+  margin:0;
+  padding:0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.a-card__icon .a-state.active {
+  color: #a8bd46;
+}
+
+.a-card__icon .a-state.inactive {
+  color: #e16363;
+}
+
+.a-card__list {
+    border-left:1px dashed #717171;
+  ul {
+    margin:0;
+    padding:0;
+    li {
+      list-style: none;
+      text-align: right;
+      color:#717171;
+    }
+  }
+}
+
+.a-card__perfil {
+  display: flex;
+  .a-panel-left {
+    width:200px;
+  }
+  .a-panel-right {
+
+  }
+}
