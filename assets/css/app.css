@@ -99,6 +99,9 @@ a:hover {
   background: #fff;
   padding: 1em; }
 
+.a-row-fix {
+  overflow: hidden; }
+
 .a-logo {
   max-width: 300px; }
   .a-logo img {
@@ -148,18 +151,33 @@ a:hover {
 
 .button--color-blue {
   background-color: #1B95C4; }
+  .button--color-blue:hover {
+    background-color: #1781a9; }
 
 .button--color-green {
   background-color: #A8BD46; }
+  .button--color-green:hover {
+    background-color: #95a83c; }
 
 .button--color-red {
   background-color: #E16363; }
+  .button--color-red:hover {
+    background-color: #dc4949; }
 
 .button--color-violet {
   background-color: #D477D0; }
+  .button--color-violet:hover {
+    background-color: #cd60c8; }
 
 .button--color-yellow {
   background-color: #DBA348; }
+  .button--color-yellow:hover {
+    background-color: #d6962e; }
+
+.button--color-silver {
+  background-color: #919191; }
+  .button--color-silver:hover {
+    background-color: #828282; }
 
 .a-forgot-password {
   text-align-last: right;
@@ -177,6 +195,18 @@ a:hover {
 .a-button__back {
   font-size: 12px;
   padding: .5em 1em; }
+
+.a-btn__add {
+  background: #A8BD46;
+  font-size: 15px;
+  color: #FFF;
+  padding: .3em 1em;
+  font-weight: bold;
+  float: right; }
+  .a-btn__add:hover, .a-btn__add:focus {
+    color: #FFF;
+    background: #99ac3d;
+    text-decoration: none; }
 
 .a-card {
   position: relative;
@@ -378,5 +408,27 @@ h3 {
 .a-perfil__reset-password {
   margin-top: 1em;
   color: #1B95C4; }
+
+.a-modal {
+  min-width: 450px;
+  padding: 1em; }
+
+.a-modal__header {
+  position: relative;
+  padding: 1em 0; }
+  .a-modal__header h1 {
+    padding: 0;
+    margin: 0;
+    color: #1B95C4;
+    font-size: 18px; }
+
+.a-modal__close {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.a-modal__footer {
+  padding: 1em 0 0 0;
+  text-align: right; }
 
 /*# sourceMappingURL=app.css.map */

@@ -13,22 +13,44 @@
 
 .button--color-blue {
   background-color: $blue;
+  &:hover {
+    background-color: darken($blue, 6%);
+  }
 }
 
 .button--color-green {
   background-color: $green;
+  &:hover {
+    background-color: darken($green, 6%);
+  }
 }
 
 .button--color-red {
   background-color: $red;
+  &:hover {
+    background-color: darken($red, 6%);
+  }
 }
 
 .button--color-violet {
   background-color: $violet;
+  &:hover {
+    background-color: darken($violet, 6%);
+  }
 }
 
 .button--color-yellow {
   background-color: $yellow;
+  &:hover {
+    background-color: darken($yellow, 6%);
+  }
+}
+
+.button--color-silver {
+  background-color: $gray-medium;
+  &:hover {
+    background-color: darken($gray-medium, 6%);
+  }
 }
 
 .a-forgot-password {
@@ -51,4 +73,18 @@
 .a-button__back {
   font-size: 12px;
   padding: .5em 1em;
+}
+
+.a-btn__add {
+  background: $green;
+  font-size: 15px;
+  color: #FFF;
+  padding: .3em 1em;
+  font-weight: bold;
+  float: right;
+  &:hover,&:focus {
+    color: #FFF;
+    background: darken($green,5%);
+    text-decoration: none;
+  }
 }

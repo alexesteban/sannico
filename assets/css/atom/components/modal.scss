@@ -1,0 +1,26 @@
+.a-modal {
+  min-width: 450px;
+  padding: 1em;
+}
+
+.a-modal__header {
+  position:relative;
+  padding: 1em 0;
+  h1 {
+    padding: 0;
+    margin: 0;
+    color: $blue;
+    font-size: 18px;
+  }
+}
+
+.a-modal__close {
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+.a-modal__footer {
+  padding: 1em 0 0 0;
+  text-align: right;
+}
