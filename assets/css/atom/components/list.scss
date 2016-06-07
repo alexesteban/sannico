@@ -1,0 +1,40 @@
+.a-list__alumn {
+  border:1px solid $gray-light;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:.5em 0;
+}
+
+.a-list__alumn--space {
+  justify-content: flex-start;
+  .a-list__name  {
+    padding-left: 1em;
+  }
+}
+
+.a-list__name {
+  color: $blue;
+}
+
+.a-list__photo,
+.a-list__level {
+  width:40px;
+  height: 40px;
+  text-align: center;
+}
+
+.a-list__photo {
+  i {
+    font-size: 28px;
+    color: $black-light;
+  }
+}
+
+.a-list__level {
+  background: $blue;
+  color: #FFF;
+  font-size: 28px;
+  font-weight: bold;
+
+}

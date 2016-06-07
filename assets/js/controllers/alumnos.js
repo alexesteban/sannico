@@ -1,4 +1,4 @@
-app.controller('docentesAdmCtrl', ['$scope','$mdDialog','$mdMedia','person',
+app.controller('alumnosCtrl', ['$scope','$mdDialog','$mdMedia','person',
 function ($scope,$mdDialog,$mdMedia,person) {
 
   var originatorEv;

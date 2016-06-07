@@ -45,6 +45,14 @@ function($routeProvider) {
     templateUrl: 'views/perfil_edit.html',
     controller: 'perfilEditCtrl'
   }).
+  when('/alumnos', {
+    templateUrl: 'views/alumnos.html',
+    controller: 'alumnosCtrl'
+  }).
+  when('/asignatura/:id', {
+    templateUrl: 'views/asignatura.html',
+    controller: 'asignaturaCtrl'
+  }).
   otherwise({
     redirectTo: '/'
   });

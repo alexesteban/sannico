@@ -39,7 +39,7 @@ body, html {
   padding: 0;
   background: #F7F7F7; }
 
-a:hover {
+a:hover, a:focus {
   text-decoration: none; }
 
 .a-header {
@@ -430,5 +430,92 @@ h3 {
 .a-modal__footer {
   padding: 1em 0 0 0;
   text-align: right; }
+
+.a-modal {
+  min-width: 450px;
+  padding: 1em; }
+
+.a-modal__header {
+  position: relative;
+  padding: 1em 0; }
+  .a-modal__header h1 {
+    padding: 0;
+    margin: 0;
+    color: #1B95C4;
+    font-size: 18px; }
+
+.a-modal__close {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.a-modal__footer {
+  padding: 1em 0 0 0;
+  text-align: right; }
+
+.a-list__alumn {
+  border: 1px solid #dedede;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: .5em 0; }
+
+.a-list__alumn--space {
+  justify-content: flex-start; }
+  .a-list__alumn--space .a-list__name {
+    padding-left: 1em; }
+
+.a-list__name {
+  color: #1B95C4; }
+
+.a-list__photo,
+.a-list__level {
+  width: 40px;
+  height: 40px;
+  text-align: center; }
+
+.a-list__photo i {
+  font-size: 28px;
+  color: #161616; }
+
+.a-list__level {
+  background: #1B95C4;
+  color: #FFF;
+  font-size: 28px;
+  font-weight: bold; }
+
+.a-subject {
+  border: 1px solid #dedede;
+  padding: .5em;
+  margin: .5em 0;
+  position: relative; }
+
+.a-subject__header {
+  padding-bottom: 1em; }
+
+.a-subject__icon {
+  display: inline-block; }
+  .a-subject__icon i {
+    font-size: 26px;
+    color: #919191; }
+
+.a-subject__name {
+  display: inline-block;
+  color: #1B95C4;
+  font-size: 18px; }
+
+.a-subject__failure {
+  font-size: 14px;
+  color: #919191; }
+
+.a-subject__score {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #A8BD46;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0 .5em; }
 
 /*# sourceMappingURL=app.css.map */
