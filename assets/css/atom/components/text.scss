@@ -16,12 +16,56 @@ h3 {
 }
 
 .a-title-icon {
+  position: relative;
+  min-height: 45px;
   i {
-    font-size: 35px;
+    font-size: 18px;
   }
-  span {
-    color: $blue;
-    font-size: 20px;
-    padding: .5em;
+  .a-tittle-icon__wrapper {
+    position: absolute;
+    top:0;
+    left:0;
+
+    i {
+      font-size: 35px;
+    }
+
   }
+
+  .a-tittle-info__wrapper {
+    margin-left: 40px;
+    float: left;
+    span {
+      color: $blue;
+      font-size: 20px;
+      padding: 8px .5em 0 .5em;
+      line-height: 1em;
+      display: block;
+    }
+    .a-card__grade {
+      font-size: 16px;
+      color: $red;
+      padding: 0 .5em;
+    }
+  }
+
+}
+
+.a-tittle-info__perfil {
+  float: left;
+  border-left:1px solid $blue;
+  margin:.5em;
+  a {
+    font-size: 14px;
+    padding:.5em;
+  }
+}
+
+.a-text_promedio-total {
+  color: $blue;
+  text-align: center;
+  display: block;
+  font-size: 22px;
+  border-top: 1px dashed silver;
+  padding:.5em 0;
 }

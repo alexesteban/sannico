@@ -32,6 +32,9 @@ md-datepicker {
 .md-datepicker-input-container {
   width: 85%; }
 
+md-switch {
+  margin: 0; }
+
 body, html {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -233,6 +236,12 @@ a:hover, a:focus {
   position: relative;
   display: flex;
   align-items: center; }
+  .a-card-header .a-card-header__info-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #E16363;
+    font-size: 16px; }
 
 .a-card-header__photo {
   width: 60px;
@@ -318,16 +327,16 @@ a:hover, a:focus {
     color: #717171;
     line-height: 1em; }
 
-.a-card__icon .a-state {
+.a-state {
   margin: 0;
   padding: 0;
   text-align: center;
   font-size: 12px; }
 
-.a-card__icon .a-state.active {
+.a-state.active {
   color: #a8bd46; }
 
-.a-card__icon .a-state.inactive {
+.a-state.inactive {
   color: #e16363; }
 
 .a-card__list {
@@ -359,12 +368,46 @@ h3 {
   text-align: center;
   padding: 2em 1em; }
 
-.a-title-icon i {
-  font-size: 35px; }
-.a-title-icon span {
+.a-title-icon {
+  position: relative;
+  min-height: 45px; }
+  .a-title-icon i {
+    font-size: 18px; }
+  .a-title-icon .a-tittle-icon__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .a-title-icon .a-tittle-icon__wrapper i {
+      font-size: 35px; }
+  .a-title-icon .a-tittle-info__wrapper {
+    margin-left: 40px;
+    float: left; }
+    .a-title-icon .a-tittle-info__wrapper span {
+      color: #1B95C4;
+      font-size: 20px;
+      padding: 8px .5em 0 .5em;
+      line-height: 1em;
+      display: block; }
+    .a-title-icon .a-tittle-info__wrapper .a-card__grade {
+      font-size: 16px;
+      color: #E16363;
+      padding: 0 .5em; }
+
+.a-tittle-info__perfil {
+  float: left;
+  border-left: 1px solid #1B95C4;
+  margin: .5em; }
+  .a-tittle-info__perfil a {
+    font-size: 14px;
+    padding: .5em; }
+
+.a-text_promedio-total {
   color: #1B95C4;
-  font-size: 20px;
-  padding: .5em; }
+  text-align: center;
+  display: block;
+  font-size: 22px;
+  border-top: 1px dashed silver;
+  padding: .5em 0; }
 
 .gallery {
   overflow: hidden; }
@@ -460,6 +503,11 @@ h3 {
   align-items: center;
   margin: .5em 0; }
 
+.a-list__alumn--initial {
+  justify-content: initial; }
+  .a-list__alumn--initial .a-list__photo {
+    margin-right: .5em; }
+
 .a-list__alumn--space {
   justify-content: flex-start; }
   .a-list__alumn--space .a-list__name {
@@ -489,6 +537,19 @@ h3 {
   padding: .5em;
   margin: .5em 0;
   position: relative; }
+  .a-subject md-menu {
+    position: absolute;
+    top: 0;
+    right: 5px; }
+
+.a-subject--create {
+  border: 1px dashed silver;
+  height: 126px;
+  text-align: center; }
+  .a-subject--create a {
+    display: block;
+    padding: 42px 0;
+    color: #919191; }
 
 .a-subject__header {
   padding-bottom: 1em; }
@@ -507,6 +568,8 @@ h3 {
 .a-subject__failure {
   font-size: 14px;
   color: #919191; }
+  .a-subject__failure p {
+    margin: 0; }
 
 .a-subject__score {
   position: absolute;

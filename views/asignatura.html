@@ -1,0 +1,181 @@
+<div class="a-section">
+  <div class="a-breadcrumb">
+    <a class="a-button__back" href back-button>< Atras</a>
+  </div>
+
+  <div class="a-card__flex-wrapper">
+    <div class="a-card__flex a-title-icon">
+      <div class="a-tittle-icon__wrapper">
+        <i class="flaticon-educator-1"></i>
+      </div>
+      <div class="a-tittle-info__wrapper">
+        <span>Martha Cecilia Romero Castro</span>
+        <span class="a-card__grade">8° Grado</span>
+      </div>
+      <div class="a-tittle-info__perfil">
+        <a href="#/perfil_edit/1">Ver Pefil</a>
+      </div>
+    </div>
+    <div class="a-card__flex a-title-icon text-right">
+      <i class="flaticon-book-2"></i>
+      <span>Algebra</span>
+    </div>
+  </div>
+
+  <!-- CARD -->
+    <div class="a-card">
+      <div class="a-card-wrapper">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <md-input-container class="md-block">
+              <label>Periodo Académico</label>
+              <md-select ng-model="myModel" required>
+                <md-option value="1">Periodo 1</md-option>
+                <md-option value="2">Periodo 2</md-option>
+                <md-option value="3">Periodo 3</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div class="col-sm-6">
+
+            <!-- TABS -->
+              <ul tabs class="nav nav-pills nav-justified" role="tablist">
+                <li class="active"><a href="#tareas" role="tab" data-toggle="tab">TAREAS</a></li>
+                <li><a href="#evaluaciones" role="tab" data-toggle="tab">EVALUACIONES</a></li>
+                <li><a href="#fallas" role="tab" data-toggle="tab">FALLAS</a></li>
+              </ul>
+              <!-- END TABS -->
+
+          </div>
+        </div>
+
+        <hr>
+
+      <div class="a-panel-right tab-content a-card__flex">
+
+        <div role="tabpanel" class="tab-pane active" id="tareas">
+
+          <div class="row">
+            <!-- Alumns Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject">
+
+                <md-menu>
+                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                  <i class="flaticon-show-more-button-with-three-dots"></i>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="edit($event,'nota')"><i class="flaticon-edit"></i>  Editar</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+
+                  <div class="a-subject__header">
+                    <div class="a-subject__name">
+                      Trabajo en Clase
+                    </div>
+                  </div>
+                  <div class="a-subject__failure">
+                    <p>Entrega: 2016-03-11</p>
+                    <p>Observación: xxxxxx</p>
+                  </div>
+                  <div class="a-subject__score">8.5</div>
+
+              </div>
+            </div>
+            <!-- End Alumns Academic -->
+          </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="evaluaciones">
+
+          <div class="row">
+            <!-- Alumns Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject">
+
+                <md-menu>
+                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                  <i class="flaticon-show-more-button-with-three-dots"></i>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="edit($event,'nota')"><i class="flaticon-edit"></i>  Editar</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+
+                  <div class="a-subject__header">
+                    <div class="a-subject__name">
+                      Parcial Final
+                    </div>
+                  </div>
+                  <div class="a-subject__failure">
+                    <p>Presentación: 2016-03-11</p>
+                    <p>Observación: xxxxxx</p>
+                  </div>
+                  <div class="a-subject__score">8.5</div>
+
+              </div>
+            </div>
+            <!-- End Alumns Academic -->
+          </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="fallas">
+
+          <div class="row">
+            <!-- Alumns Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject">
+
+                <md-menu>
+                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                  <i class="flaticon-show-more-button-with-three-dots"></i>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-click="edit($event,'falla')"><i class="flaticon-edit"></i>  Editar</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button ng-click="delete()"><i class="flaticon-delete-button"></i>Eliminar</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+
+                  <div class="a-subject__header">
+                    <div class="a-subject__name">
+                      Inasistencia
+                    </div>
+                  </div>
+                  <div class="a-subject__failure">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <p>Fecha: 2016-03-11</p>
+                      </div>
+                      <div class="col-sm-6">
+                        Justificado: No
+                      </div>
+                    </div>
+                    <p>Observación: xxxxxx</p>
+                  </div>
+              </div>
+            </div>
+            <!-- End Alumns Academic -->
+          </div>
+        </div>
+
+      </div>
+
+      <div>
+        <h2 class="a-text_promedio-total">Promedio Total: 8.5</h2>
+      </div>
+
+      </div>
+    </div>
+
+</div>

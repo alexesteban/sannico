@@ -3,6 +3,22 @@
   padding: .5em;
   margin:.5em 0;
   position: relative;
+  md-menu {
+    position: absolute;
+    top:0;
+    right:5px;
+  }
+}
+
+.a-subject--create {
+  border: 1px dashed silver;
+  height: 126px;
+  text-align: center;
+  a {
+    display: block;
+    padding: 42px 0;
+    color: $gray-medium;
+  }
 }
 
 .a-subject__header {
@@ -26,6 +42,9 @@
 .a-subject__failure {
   font-size: 14px;
   color: $gray-medium;
+  p {
+    margin:0;
+  }
 }
 
 .a-subject__score {

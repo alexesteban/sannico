@@ -1,0 +1,71 @@
+<md-dialog class="a-modal">
+  <div class="a-modal__header">
+    <h1>Editar {{typeEdit}}</h1>
+    <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
+  </div>
+  <div class="a-modal__body">
+    <div ng-if="typeEdit == 'nota'">
+      <div class="row-fluid a-row-fix">
+        <div class="col-sm-6">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Nota</label>
+            <input >
+          </md-input-container>
+        </div>
+        <div class="col-sm-6">
+          <p>Recuerde, el mínimo es 0 y el máximo es 10</p>
+        </div>
+      </div>
+      <div class="row-fluid a-row-fix">
+        <div class="col-sm-12">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Observaciones</label>
+            <input >
+          </md-input-container>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="typeEdit == 'falla'">
+      <div class="row-fluid a-row-fix">
+        <div class="col-sm-6">
+          <md-datepicker ng-model="fecha" md-placeholder="Fecha"></md-datepicker>
+        </div>
+        <div class="col-sm-6">
+          <md-input-container class="md-block">
+            <label>Tipo de falla</label>
+            <md-select ng-model="myModel" required>
+              <md-option value="I">Inasistencia</md-option>
+              <md-option value="T">Tardanza</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row-fluid a-row-fix">
+        <div class="col-sm-6">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Observacion</label>
+            <input >
+          </md-input-container>
+        </div>
+        <div class="col-sm-6">
+          <md-input-container class="md-block">
+            <label>Justificación</label>
+            <md-select ng-model="jus" required>
+              <md-option value="S">SI</md-option>
+              <md-option value="N">NO</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="a-modal__footer">
+    <button class="a-button button--color-violet">
+      EDITAR
+    </button>
+    <button class="a-button button--color-silver" ng-click="cancel()">
+      CANCELAR
+    </button>
+  </div>
+</md-dialog>

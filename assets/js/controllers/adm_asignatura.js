@@ -1,4 +1,4 @@
-app.controller('asignaturaCtrl', ['$scope','$mdMedia','$mdDialog','person',
+app.controller('admAsignaturaCtrl', ['$scope','$mdMedia','$mdDialog','person',
 function ($scope,$mdMedia,$mdDialog,person) {
 
   $scope.openMenu = function($mdOpenMenu, ev) {
@@ -9,8 +9,8 @@ function ($scope,$mdMedia,$mdDialog,person) {
   $scope.edit = function(ev,$tipo) {
   person.setPerson($tipo);
    $mdDialog.show({
-     controller: 'editNoteCtrl',
-     templateUrl: 'views/edit_note.html',
+     controller: 'editTareaCtrl',
+     templateUrl: 'views/edit_tarea.html',
      parent: angular.element(document.body),
      targetEvent: ev,
      clickOutsideToClose:true
@@ -22,5 +22,10 @@ function ($scope,$mdMedia,$mdDialog,person) {
    });
  };
 
+ $scope.state = "Al";
+
+  $scope.setState = function($state){
+    $scope.state = $state;
+  };
 
 }]);

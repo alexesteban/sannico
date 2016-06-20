@@ -1,0 +1,221 @@
+<div class="a-section">
+  <div class="a-breadcrumb">
+    <a class="a-button__back" href back-button>< Atras</a>
+  </div>
+
+  <div class="a-card__flex-wrapper">
+    <div class="a-card__flex a-title-icon">
+      <div class="a-tittle-icon__wrapper">
+        <i class="flaticon-book-2"></i>
+      </div>
+      <div class="a-tittle-info__wrapper">
+        <span>Algebra</span>
+        <span class="a-card__grade">8° Grado</span>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="a-section">
+    <div class="a-card">
+    <div class="a-card-wrapper">
+
+      <div class="row">
+        <div class="col-sm-6">
+
+          <md-input-container ng-if="state == 'Al'" class="md-block" flex-gt-sm>
+            <label>Buscar Alumno</label>
+            <input >
+          </md-input-container>
+
+          <md-input-container ng-if="state == 'Ac'" class="md-block">
+            <label>Periodo Académico</label>
+            <md-select ng-model="myModel" required>
+              <md-option value="1">Periodo 1</md-option>
+              <md-option value="2">Periodo 2</md-option>
+              <md-option value="3">Periodo 3</md-option>
+            </md-select>
+          </md-input-container>
+
+        </div>
+        <div class="col-sm-6">
+
+          <!-- TABS -->
+            <ul tabs class="nav nav-pills nav-justified" role="tablist">
+              <li class="active"><a href="#alumnos" role="tab" data-toggle="tab" ng-click="setState('Al')">ALUMNOS</a></li>
+              <li><a href="#tareas" role="tab" data-toggle="tab" ng-click="setState('Ac')">TAREAS</a></li>
+              <li><a href="#evaluaciones" role="tab" data-toggle="tab" ng-click="setState('Ac')">EVALUACIONES</a></li>
+            </ul>
+            <!-- END TABS -->
+
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="a-panel-right tab-content a-card__flex">
+        <div role="tabpanel" class="tab-pane active" id="alumnos">
+          <div class="row">
+            <!-- Alumn -->
+            <div class="col-sm-6">
+              <a href="#/perfil_edit/1">
+              <div class="a-list__alumn a-list__alumn--initial">
+                  <div class="a-list__photo">
+                    <i class="flaticon-boy-broad-smile"></i>
+                  </div>
+                  <div class="a-list__name">
+                    Camilo Andrés Castrillón Colmenares
+                  </div>
+              </div>
+              </a>
+            </div>
+            <!-- End Alumn -->
+
+            <!-- Alumn -->
+            <div class="col-sm-6">
+              <a href="#/perfil_edit/1">
+              <div class="a-list__alumn a-list__alumn--initial">
+                  <div class="a-list__photo">
+                    <i class="flaticon-boy-broad-smile"></i>
+                  </div>
+                  <div class="a-list__name">
+                    Camilo Andrés Castrillón Colmenares
+                  </div>
+              </div>
+              </a>
+            </div>
+            <!-- End Alumn -->
+
+            <!-- Alumn -->
+            <div class="col-sm-6">
+              <a href="#/perfil_edit/1">
+              <div class="a-list__alumn a-list__alumn--initial">
+                  <div class="a-list__photo">
+                    <i class="flaticon-boy-broad-smile"></i>
+                  </div>
+                  <div class="a-list__name">
+                    Camilo Andrés Castrillón Colmenares
+                  </div>
+              </div>
+              </a>
+            </div>
+            <!-- End Alumn -->
+          </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="tareas">
+
+          <div class="row">
+            <!-- Add Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject a-subject--create">
+                <a href="javascript:void(0)" ng-click="edit($event,'ctarea')">
+                  <i class="flaticon-plus"></i>
+                  Crear una Tarea
+                </a>
+              </div>
+            </div>
+            <!-- End Add Academic -->
+
+            <!-- Alumns Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject">
+                <md-menu>
+                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                  <i class="flaticon-show-more-button-with-three-dots"></i>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item>
+                        <md-button href="#/calificar/1"><i class="flaticon-pen"></i>  Calificar</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="edit($event,'etarea')"><i class="flaticon-edit"></i>  Editar</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button ng-click="delete()"><i class="flaticon-delete-button"></i> Eliminar</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+                  <div class="a-subject__header">
+                    <div class="a-subject__name">
+                      Trabajo en Clase
+                    </div>
+                  </div>
+                  <div class="a-subject__failure">
+                    <p>Entrega: 2016-03-11</p>
+                    <p>
+                      <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publicado">publicada</md-switch>
+                    </p>
+                    <p class="a-state active"> Calificable </p>
+                  </div>
+                  <div class="a-subject__score">15%</div>
+              </div>
+            </div>
+            <!-- End Alumns Academic -->
+
+          </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="evaluaciones">
+
+          <div class="row">
+            <!-- Add Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject a-subject--create">
+                <a href="javascript:void(0)" ng-click="edit($event,'ceval')">
+                  <i class="flaticon-plus"></i>
+                  Crear una Evaluación
+                </a>
+              </div>
+            </div>
+            <!-- End Add Academic -->
+
+            <!-- Alumns Academic -->
+            <div class="col-sm-4">
+              <div class="a-subject">
+                <md-menu>
+                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                  <i class="flaticon-show-more-button-with-three-dots"></i>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item>
+                        <md-button href="#/"><i class="flaticon-pen"></i>  Calificar</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="edit($event,'eeval')"><i class="flaticon-edit"></i>  Editar</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button ng-click="delete()"><i class="flaticon-delete-button"></i> Eliminar</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+                  <div class="a-subject__header">
+                    <div class="a-subject__name">
+                      Trabajo en Clase
+                    </div>
+                  </div>
+                  <div class="a-subject__failure">
+                    <p>Entrega: 2016-03-11</p>
+                    <p>
+                      <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publicado">publicada</md-switch>
+                    </p>
+                    <br>
+                  </div>
+                  <div class="a-subject__score">15%</div>
+              </div>
+            </div>
+            <!-- End Alumns Academic -->
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>

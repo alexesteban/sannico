@@ -27,6 +27,13 @@
   position: relative;
   display: flex;
   align-items: center;
+  .a-card-header__info-right {
+    position: absolute;
+    top:0;
+    right: 0;
+    color: $red;
+    font-size: 16px;
+  }
 }
 
 .a-card-header__photo {
@@ -134,18 +141,18 @@
   }
 }
 
-.a-card__icon .a-state{
+.a-state{
   margin:0;
   padding:0;
   text-align: center;
   font-size: 12px;
 }
 
-.a-card__icon .a-state.active {
+.a-state.active {
   color: #a8bd46;
 }
 
-.a-card__icon .a-state.inactive {
+.a-state.inactive {
   color: #e16363;
 }
 

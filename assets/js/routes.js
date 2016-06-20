@@ -49,9 +49,25 @@ function($routeProvider) {
     templateUrl: 'views/alumnos.html',
     controller: 'alumnosCtrl'
   }).
-  when('/asignatura/:id', {
+  when('/asignatura/:idAsignatura/:idAlumno', {
     templateUrl: 'views/asignatura.html',
     controller: 'asignaturaCtrl'
+  }).
+  when('/asignaturas', {
+    templateUrl: 'views/asignaturas.html',
+    controller: 'asignaturasCtrl'
+  }).
+  when('/adm_asignatura/:id', {
+    templateUrl: 'views/adm_asignatura.html',
+    controller: 'admAsignaturaCtrl'
+  }).
+  when('/calificar/:id', {
+    templateUrl: 'views/calificar.html',
+    controller: 'calificarCtrl'
+  }).
+  when('/acudientes', {
+    templateUrl: 'views/acudientes.html',
+    controller: 'acudientesCtrl'
   }).
   otherwise({
     redirectTo: '/'
