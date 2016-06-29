@@ -13,6 +13,11 @@ h3 {
   color: $blue;
   text-align: center;
   padding:2em 1em;
+  position: relative;
+  p {
+    font-size:16px;
+    color: gray;
+  }
 }
 
 .a-title-icon {
@@ -68,4 +73,12 @@ h3 {
   font-size: 22px;
   border-top: 1px dashed silver;
   padding:.5em 0;
+}
+
+.a-text-left {
+  text-align: left;
+}
+
+.a-text--uppercase {
+  text-transform: uppercase;
 }

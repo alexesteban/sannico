@@ -10,3 +10,14 @@
     }
   }
 }
+
+.a-gallery__photo {
+  a {
+    height: 126px;
+    text-align: center;
+    display: block;
+    img {
+      height: 100%;
+    }
+  }
+}

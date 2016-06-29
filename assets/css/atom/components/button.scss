@@ -81,7 +81,10 @@
   color: #FFF;
   padding: .3em 1em;
   font-weight: bold;
-  float: right;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  margin-top: -15px;
   &:hover,&:focus {
     color: #FFF;
     background: darken($green,5%);

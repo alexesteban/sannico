@@ -205,7 +205,10 @@ a:hover, a:focus {
   color: #FFF;
   padding: .3em 1em;
   font-weight: bold;
-  float: right; }
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  margin-top: -15px; }
   .a-btn__add:hover, .a-btn__add:focus {
     color: #FFF;
     background: #99ac3d;
@@ -354,6 +357,11 @@ a:hover, a:focus {
   .a-card__perfil .a-panel-left {
     width: 200px; }
 
+.a-card__description {
+  padding: .5em;
+  text-align: left;
+  color: #919191; }
+
 h3 {
   font-size: 16px;
   font-weight: bold;
@@ -366,7 +374,11 @@ h3 {
   font-size: 25px;
   color: #1B95C4;
   text-align: center;
-  padding: 2em 1em; }
+  padding: 2em 1em;
+  position: relative; }
+  .a-title__internal p {
+    font-size: 16px;
+    color: gray; }
 
 .a-title-icon {
   position: relative;
@@ -409,6 +421,12 @@ h3 {
   border-top: 1px dashed silver;
   padding: .5em 0; }
 
+.a-text-left {
+  text-align: left; }
+
+.a-text--uppercase {
+  text-transform: uppercase; }
+
 .gallery {
   overflow: hidden; }
   .gallery .image {
@@ -418,6 +436,13 @@ h3 {
     border: 1px solid silver; }
     .gallery .image img {
       width: 100%; }
+
+.a-gallery__photo a {
+  height: 126px;
+  text-align: center;
+  display: block; }
+  .a-gallery__photo a img {
+    height: 100%; }
 
 .a-perfil__photo {
   width: 150px;

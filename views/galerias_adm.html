@@ -1,0 +1,95 @@
+<div class="a-section">
+  <div class="a-title__internal">
+    GALERIA
+    <a class="a-btn__add" href ng-click="addTeacher($event,'Crear')" >
+      <i class="flaticon-plus"></i>  AGREGAR
+    </a>
+  </div>
+</div>
+
+<div class="a-section">
+  <div class="a-card__flex-wrapper">
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex">
+      <a href="#/galeria_adm/1">
+        <div class="a-card-wrapper">
+          <div class="a-card-header">
+            <div class="a-card-header__title-photo">
+              <h1 class="light">Semana Cultural 2016</h1>
+            </div>
+            <md-menu>
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+            <i class="flaticon-show-more-button-with-three-dots"></i>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="addTeacher($event,'Editar')"><i class="flaticon-edit"></i>  Editar</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="delete()"><i class="flaticon-delete-button"></i>Eliminar</md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+          </div>
+        </div>
+        <div class="a-card-wrapper">
+          <div class="a-card-body a-card__flex-wrapper">
+            <div class="a-card__icon">
+                  <i class="flaticon-stack-of-photos"></i>
+            </div>
+            <div class="a-card__list">
+              <ul>
+                <li>12 Fotos</li>
+              </ul>
+            </div>
+          </div>
+          <p class="a-card__description">Semana cultural que se realizó del 6 al 20 de Junio</p>
+        </div>
+      </a>
+    </div>
+  <!-- END CARD -->
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex">
+      <a href="#/galeria_adm/1">
+        <div class="a-card-wrapper">
+          <div class="a-card-header">
+            <div class="a-card-header__title-photo">
+              <h1 class="light">Semana Cultural 2016</h1>
+            </div>
+            <md-menu>
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+            <i class="flaticon-show-more-button-with-three-dots"></i>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button href="#/perfil_edit/1"><i class="flaticon-edit"></i>  Editar</md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="delete()"><i class="flaticon-delete-button"></i>Eliminar</md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+          </div>
+        </div>
+        <div class="a-card-wrapper">
+          <div class="a-card-body a-card__flex-wrapper">
+            <div class="a-card__icon">
+                  <i class="flaticon-stack-of-photos"></i>
+            </div>
+            <div class="a-card__list">
+              <ul>
+                <li>12 Fotos</li>
+              </ul>
+            </div>
+          </div>
+          <p class="a-card__description">Semana cultural que se realizó del 6 al 20 de Junio</p>
+        </div>
+      </a>
+    </div>
+  <!-- END CARD -->
+
+
+  </div>
+</div>

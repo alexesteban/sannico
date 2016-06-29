@@ -69,6 +69,18 @@ function($routeProvider) {
     templateUrl: 'views/acudientes.html',
     controller: 'acudientesCtrl'
   }).
+  when('/cronograma_adm', {
+    templateUrl: 'views/cronograma_adm.html',
+    controller: 'cronogramaAdmCtrl'
+  }).
+  when('/galerias_adm', {
+    templateUrl: 'views/galerias_adm.html',
+    controller: 'galeriasAdmCtrl'
+  }).
+  when('/galeria_adm/:id', {
+    templateUrl: 'views/galeria_adm.html',
+    controller: 'galeriaAdmCtrl'
+  }).
   otherwise({
     redirectTo: '/'
   });
