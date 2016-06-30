@@ -1,0 +1,220 @@
+<div class="a-section">
+  <div class="a-title__internal">
+    ADMINISTRACIÓN
+  </div>
+</div>
+
+
+<div class="a-section">
+  <div class="a-card">
+  <div class="a-card-wrapper">
+
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+
+        <!-- TABS -->
+          <ul tabs class="nav nav-pills nav-justified" role="tablist">
+            <li class="active"><a href="#contenido" role="tab" data-toggle="tab" >CONTENIDO</a></li>
+            <li><a href="#banners" role="tab" data-toggle="tab" >BANNERS</a></li>
+            <li><a href="#periodos" role="tab" data-toggle="tab" >PERIODOS</a></li>
+          </ul>
+          <!-- END TABS -->
+
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="a-panel-right tab-content a-card__flex">
+      <div role="tabpanel" class="tab-pane active" id="contenido">
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Institucional</label>
+              <input >
+            </md-input-container>
+          </div>
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Misión</label>
+              <input >
+            </md-input-container>
+          </div>
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Visión</label>
+              <input >
+            </md-input-container>
+          </div>
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Servicios</label>
+              <input >
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Escudo</label>
+              <input type="file">
+            </md-input-container>
+          </div>
+          <div class="col-sm-6">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Bandera</label>
+              <input type="file">
+            </md-input-container>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+          <button class="a-button button--color-violet a-text--uppercase">
+            ACTUALIZAR
+          </button>
+        </div>
+
+        <br>
+
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="banners">
+
+        <div class="row">
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Nosotros</label>
+              <input type="file" >
+            </md-input-container>
+          </div>
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Cronograma</label>
+              <input type="file" >
+            </md-input-container>
+          </div>
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Docentes</label>
+              <input type="file" >
+            </md-input-container>
+          </div>
+
+          <div class="col-sm-12">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Galería</label>
+              <input type="file" >
+            </md-input-container>
+          </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+          <button class="a-button button--color-violet a-text--uppercase">
+            ACTUALIZAR
+          </button>
+        </div>
+
+        <br>
+
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="periodos">
+
+        <div class="a-peril__title-info">Año Actual: 2016</div>
+
+        <div class="row">
+          <div class="col-sm-3 ">
+            Rango de Notas
+          </div>
+          <div class="col-sm-3">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Mínimo</label>
+              <input >
+            </md-input-container>
+          </div>
+          <div class="col-sm-3">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Máximo</label>
+              <input >
+            </md-input-container>
+          </div>
+          <div class="col-sm-3">
+            <md-input-container class="md-block">
+              <label>Notas con Decimales</label>
+              <md-select ng-model="myModel" required>
+                <md-option value="S">SI</md-option>
+                <md-option value="N">NO</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="a-peril__title-info">Periodos Académicos</div>
+
+        <div class="row">
+          <!-- Add Academic -->
+          <div class="col-sm-4">
+            <div class="a-subject a-subject--create">
+              <a href="javascript:void(0)" ng-click="edit($event,'Crear')">
+                <i class="flaticon-plus"></i>
+                Crear Periodo Académico
+              </a>
+            </div>
+          </div>
+          <!-- End Add Academic -->
+
+          <!-- Alumns Academic -->
+          <div class="col-sm-4">
+            <div class="a-subject">
+              <md-menu>
+                <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                <i class="flaticon-show-more-button-with-three-dots"></i>
+                </md-button>
+                <md-menu-content>
+                  <md-menu-item>
+                      <md-button ng-click="edit($event,'Editar')"><i class="flaticon-edit"></i>  Editar</md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button ng-click="delete()"><i class="flaticon-delete-button"></i> Eliminar</md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+                <div class="a-subject__header">
+                  <div class="a-subject__name">
+                    Periodo 1
+                  </div>
+                </div>
+                <div class="a-subject__failure">
+                  <p>Empieza: 2016-03-11</p>
+                  <p>Termina: 2016-03-11</p>
+                  <p>
+                    <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publicado">Activo</md-switch>
+                  </p>
+                </div>
+            </div>
+          </div>
+          <!-- End Alumns Academic -->
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>

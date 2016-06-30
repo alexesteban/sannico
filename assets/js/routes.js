@@ -81,6 +81,10 @@ function($routeProvider) {
     templateUrl: 'views/galeria_adm.html',
     controller: 'galeriaAdmCtrl'
   }).
+  when('/app_adm', {
+    templateUrl: 'views/app_adm.html',
+    controller: 'appAdmCtrl'
+  }).
   otherwise({
     redirectTo: '/'
   });
