@@ -17,6 +17,7 @@
       "core":[
         "assets/js/project.js",
         "assets/js/routes.js",
+        "assets/js/controllers/app.js",
         "assets/js/controllers/home.js",
         "assets/js/controllers/header.js",
         "assets/js/controllers/footer.js",
@@ -53,7 +54,8 @@
         "assets/js/directives/gallery.js",
         "assets/js/directives/tabs.js",
         "assets/js/directives/back-button.js",
-        "assets/js/services/add_person.js"
+        "assets/js/services/add_person.js",
+        "assets/js/services/create_guid.js"
       ]
     }
   }

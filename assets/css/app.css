@@ -427,6 +427,9 @@ h3 {
 .a-text--uppercase {
   text-transform: uppercase; }
 
+.a-txt-cent {
+  text-align: center; }
+
 .gallery {
   overflow: hidden; }
   .gallery .image {
@@ -476,6 +479,28 @@ h3 {
 .a-perfil__reset-password {
   margin-top: 1em;
   color: #1B95C4; }
+
+.a-dropdown {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  right: 10px;
+  top: 48px; }
+  .a-dropdown a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block; }
+    .a-dropdown a img {
+      width: 100%; }
+
+.dropdown-menu {
+  left: inherit;
+  right: 0; }
+
+.dropdown-menu > li > a {
+  width: 100%; }
 
 .a-modal {
   min-width: 450px;

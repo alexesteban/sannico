@@ -32,11 +32,24 @@
       </a>
     </li>
     <li>
-      <a href="#/login" class="button--color-violet">
+      <a href="#/login" class="button--color-violet" ng-if=" !loggedIn || loggedIn == '' " href="#/login" >
         INGRESAR
         <span>Accede a la información académica</span>
       </a>
     </li>
+    <li ng-if="loggedIn && loggedIn != '' ">
+      <a href=""></a>
+    </li>
   </ul>
+
+  <div ng-if="loggedIn && loggedIn != '' " class="a-dropdown dropdown">
+    <a class="av-avatar dropdown-toggle" href=""  id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <img ng-if="avatar == ''" src="assets/img/avatar/default.png" alt="">
+      <img ng-if="avatar != ''" ng-src="{{avatar}}" />
+    </a>
+    <ul class="dropdown-menu " aria-labelledby="perfil">
+      <li><a href="" ng-click="logout()" >Salir</a></li>
+    </ul>
+  </div>
 
 </div>

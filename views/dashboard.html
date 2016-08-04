@@ -1,4 +1,4 @@
-<div class="a-section">
+ <div class="a-section">
   <div class="a-title__internal">
     DASHBOARD
   </div>
@@ -8,7 +8,7 @@
   <div class="a-card__flex-wrapper">
 
   <!-- CARD -->
-    <div class="a-card a-card__flex">
+    <div class="a-card a-card__flex" ng-if="rol == 1">
       <a href="#/docentes_adm">
       <div class="a-card-wrapper">
         <div class="a-card-header">
@@ -34,7 +34,7 @@
   <!-- END CARD -->
 
   <!-- CARD -->
-    <div class="a-card a-card__flex">
+    <div class="a-card a-card__flex" ng-if="rol == 1">
       <a href="#/alumnos">
       <div class="a-card-wrapper">
         <div class="a-card-header">
@@ -60,33 +60,7 @@
   <!-- END CARD -->
 
   <!-- CARD -->
-    <div class="a-card a-card__flex">
-      <a href="#/asignaturas">
-      <div class="a-card-wrapper">
-        <div class="a-card-header">
-          <div class="a-card-header__title-photo">
-            <h1>Asignaturas</h1>
-          </div>
-        </div>
-      </div>
-      <div class="a-card-wrapper">
-        <div class="a-card-body a-card__flex-wrapper">
-          <div class="a-card__icon">
-                <i class="flaticon-books-stack-of-three"></i>
-          </div>
-          <div class="a-card__list">
-            <ul>
-              <li>18 Asignaturas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </a>
-    </div>
-  <!-- END CARD -->
-
-  <!-- CARD -->
-    <div class="a-card a-card__flex">
+    <div class="a-card a-card__flex" ng-if="rol == 1">
       <a href="#/acudientes">
       <div class="a-card-wrapper">
         <div class="a-card-header">
@@ -112,7 +86,7 @@
   <!-- END CARD -->
 
   <!-- CARD -->
-    <div class="a-card a-card__flex">
+    <div class="a-card a-card__flex" ng-if="rol == 1">
       <a href="#/cronograma_adm">
       <div class="a-card-wrapper">
         <div class="a-card-header">
@@ -138,7 +112,33 @@
   <!-- END CARD -->
 
   <!-- CARD -->
-    <div class="a-card a-card__flex">
+    <div class="a-card a-card__flex" ng-if="rol == 2">
+      <a href="#/asignaturas">
+      <div class="a-card-wrapper">
+        <div class="a-card-header">
+          <div class="a-card-header__title-photo">
+            <h1>Asignaturas</h1>
+          </div>
+        </div>
+      </div>
+      <div class="a-card-wrapper">
+        <div class="a-card-body a-card__flex-wrapper">
+          <div class="a-card__icon">
+                <i class="flaticon-books-stack-of-three"></i>
+          </div>
+          <div class="a-card__list">
+            <ul>
+              <li>18 Asignaturas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+  <!-- END CARD -->
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex" ng-if="rol == 1 || rol == 2">
       <a href="#/galerias_adm">
       <div class="a-card-wrapper">
         <div class="a-card-header">
@@ -165,7 +165,33 @@
   <!-- END CARD -->
 
   <!-- CARD -->
-    <div class="a-card a-card__flex">
+    <div class="a-card a-card__flex" ng-if="rol == 2">
+      <a href="#/publicaciones_adm">
+      <div class="a-card-wrapper">
+        <div class="a-card-header">
+          <div class="a-card-header__title-photo">
+            <h1>Publicaciones</h1>
+          </div>
+        </div>
+      </div>
+      <div class="a-card-wrapper">
+        <div class="a-card-body a-card__flex-wrapper">
+          <div class="a-card__icon">
+                <i class="flaticon-open-magazine"></i>
+          </div>
+          <div class="a-card__list">
+            <ul>
+              <li>3 Publicaciones</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+  <!-- END CARD -->
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex" ng-if="rol == 1">
       <a href="#/app_adm">
       <div class="a-card-wrapper">
         <div class="a-card-header">
@@ -184,6 +210,40 @@
       </a>
     </div>
   <!-- END CARD -->
+
+  <!-- FATHERS -->
+
+    <!-- CARD -->
+    <div class="a-card a-card__flex" ng-if="rol == 4">
+      <a href="#/publicaciones_adm">
+      <div class="a-card-wrapper">
+        <div class="a-card-header">
+          <div class="a-card-header__title-photo">
+            <h1>Hector Iván Rodrigues Castro</h1>
+          </div>
+        </div>
+      </div>
+      <div class="a-card-wrapper">
+        <div class="a-card-body a-card__flex-wrapper">
+          <div class="a-card__icon">
+                <i class="flaticon-smiling-girl"></i>
+          </div>
+          <div class="a-card__list">
+            <ul>
+              <li>12 Años</li>
+              <li>7° Grado</li>
+              <li>0 Fallas</li>
+              <li>4.2 en Promedio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+    <!-- END CARD -->
+
+  <!-- /FATHERS -->
+
 
   </div>
 </div>

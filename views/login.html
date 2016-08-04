@@ -28,25 +28,29 @@
         <div class="a-card-header">
           <div class="a-card-header__title-photo">
             <h1>Ingresa con tus datos</h1>
+
           </div>
         </div>
       </div>
       <div class="a-card-wrapper">
         <div class="a-card-body">
-          <form class="" action="#/dashboard/1" method="post">
+          <form ng-submit="login()" >
             <md-input-container class="md-block">
               <label>Correo Electrónico</label>
-              <input name="clientName" >
+              <input type="text" ng-model="email" >
             </md-input-container>
             <md-input-container class="md-block">
               <label>Password</label>
-              <input name="clientName" >
+              <input type="password" ng-model="password">
             </md-input-container>
             <div class="a-forgot-password">
                 <a href="#/">Olvidé mi contraseña</a>
             </div>
             <div class="a-button-form">
-              <button class="a-button button--color-violet">
+
+              <div ng-if="error" class="alert alert-danger" role="alert" >{{error}}</div>
+
+              <button type="submit" class="a-button button--color-violet">
                 ENTRAR
               </button>
             </div>

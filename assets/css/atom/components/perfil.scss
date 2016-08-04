@@ -36,3 +36,30 @@
   margin-top: 1em;
   color: $blue;
 }
+
+.a-dropdown {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  right: 10px;
+  top: 48px;
+  a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.dropdown-menu {
+  left: inherit;;
+  right: 0;
+}
+
+.dropdown-menu>li>a {
+  width: 100%;
+}
