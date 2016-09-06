@@ -12,19 +12,29 @@
   <div class="a-card-wrapper">
 
     <div class="row">
-      <div class="col-sm-6">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Buscar Alumno</label>
-          <input >
-        </md-input-container>
+      <div class="col-sm-8">
+        <div class="col-sm-6">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Buscar por Nombre</label>
+            <input  type="text" ng-model="search.nombres">
+          </md-input-container>
+        </div>
+        <div class="col-sm-6">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Buscar por Apellido</label>
+            <input  type="text" ng-model="search.apellidos">
+          </md-input-container>
+        </div>
+
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <md-input-container class="md-block">
           <label>Filtrar por Grado</label>
-          <md-select ng-model="myModel" required>
+          <md-select ng-model="grado.grado" >
             <md-option value="6">6°</md-option>
             <md-option value="7">7°</md-option>
             <md-option value="8">8°</md-option>
+            <md-option value="">Todos</md-option>
           </md-select>
         </md-input-container>
       </div>
@@ -35,52 +45,22 @@
     <div class="row">
 
       <!-- Alumn -->
-      <div class="col-sm-6">
-        <a href="#/perfil_edit/1">
+      <div class="col-sm-6" ng-repeat="alumno in alumnos  |  filter:search | filter:grado">
+        <a href="#/perfil_edit/{{alumno.guid}}">
         <div class="a-list__alumn">
             <div class="a-list__photo">
-              <i class="flaticon-boy-broad-smile"></i>
+              <i ng-if="alumno.genero == 'M' " class="flaticon-boy-broad-smile"></i>
+              <i ng-if="alumno.genero == 'F' " class="flaticon-smiling-girl"></i>
             </div>
             <div class="a-list__name">
-              Camilo Andrés Castrillón Colmenares
+              {{alumno.nombres}} {{alumno.apellidos}}
             </div>
-            <div class="a-list__level">8°</div>
+            <div class="a-list__level">{{alumno.grado}}°</div>
         </div>
         </a>
       </div>
       <!-- End Alumn -->
 
-      <!-- Alumn -->
-      <div class="col-sm-6">
-        <a href="#/perfil_edit/1">
-        <div class="a-list__alumn">
-            <div class="a-list__photo">
-              <i class="flaticon-boy-broad-smile"></i>
-            </div>
-            <div class="a-list__name">
-              Camilo Andrés Castrillón Colmenares
-            </div>
-            <div class="a-list__level">8°</div>
-        </div>
-        </a>
-      </div>
-      <!-- End Alumn -->
-
-      <!-- Alumn -->
-      <div class="col-sm-6">
-        <a href="#/perfil_edit/1">
-        <div class="a-list__alumn">
-            <div class="a-list__photo">
-              <i class="flaticon-boy-broad-smile"></i>
-            </div>
-            <div class="a-list__name">
-              Camilo Andrés Castrillón Colmenares
-            </div>
-            <div class="a-list__level">8°</div>
-        </div>
-        </a>
-      </div>
-      <!-- End Alumn -->
 
     </div>
 

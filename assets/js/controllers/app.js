@@ -4,6 +4,8 @@ app.controller('appCtrl', ['$scope','$http','$cookies', '$location',
 
     $scope.logued = function(){
       $scope.loggedIn = $cookies.get('logued');
+      $scope.callAvatar();
+      $scope.callRol();
       $location.path('/dashboard/1');
     };
 
@@ -39,8 +41,7 @@ app.controller('appCtrl', ['$scope','$http','$cookies', '$location',
       });
     };
 
-    $scope.callAvatar();
-    $scope.callRol();
+
 
 
   }]);

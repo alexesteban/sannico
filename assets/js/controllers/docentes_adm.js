@@ -1,5 +1,5 @@
-app.controller('docentesAdmCtrl', ['$scope','$mdDialog','$mdMedia','person',
-function ($scope,$mdDialog,$mdMedia,person) {
+app.controller('docentesAdmCtrl', ['$scope','$mdDialog','$mdMedia','person','$http',
+function ($scope,$mdDialog,$mdMedia,person,$http) {
 
   var originatorEv;
    $scope.openMenu = function($mdOpenMenu, ev) {
@@ -17,11 +17,50 @@ function ($scope,$mdDialog,$mdMedia,person) {
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
+      $scope.initDocentes();
     }, function() {
-      $scope.status = 'You cancelled the dialog.';
+      $scope.initDocentes();
     });
   };
+
+
+$scope.initDocentes = function() {
+  /*Data favoritos*/
+  $http.post("servicios/readDocentes.php")
+    .success(function(respuesta){
+
+      if (respuesta.error) {
+        $scope.error = respuesta.error;
+      }else{
+        $scope.docentes = respuesta;
+
+        $scope.edad = function(Fecha){
+          fecha = new Date(Fecha);
+          hoy = new Date();
+          ed = parseInt((hoy -fecha)/365/24/60/60/1000);
+          return ed;
+        };
+
+        for (var i = 0; i < respuesta.length; i++) {
+          var docentes = $scope.docentes[i];
+          var data = respuesta[i];
+
+          docentes.nombres = data.nombres;
+          docentes.apellidos = data.apellidos;
+          docentes.edad = $scope.edad(data.nacimiento);
+
+        }
+
+      }
+
+    })
+    .error(function(){
+      $scope.misEmpresas = "Error: No hay Datos" ;
+  });
+  /*End Data favoritos*/
+};
+
+  $scope.initDocentes();
 
 
 }]);

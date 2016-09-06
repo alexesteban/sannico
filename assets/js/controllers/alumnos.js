@@ -1,5 +1,5 @@
-app.controller('alumnosCtrl', ['$scope','$mdDialog','$mdMedia','person',
-function ($scope,$mdDialog,$mdMedia,person) {
+app.controller('alumnosCtrl', ['$scope','$mdDialog','$mdMedia','person','$http',
+function ($scope,$mdDialog,$mdMedia,person,$http) {
 
   var originatorEv;
    $scope.openMenu = function($mdOpenMenu, ev) {
@@ -17,11 +17,33 @@ function ($scope,$mdDialog,$mdMedia,person) {
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
+      $scope.initAlumnos();
     }, function() {
-      $scope.status = 'You cancelled the dialog.';
+      $scope.initAlumnos();
     });
   };
+
+
+  $scope.initAlumnos = function() {
+    /*Data favoritos*/
+    $http.post("servicios/readAlumnos.php")
+      .success(function(respuesta){
+
+        if (respuesta.error) {
+          $scope.error = respuesta.error;
+        }else{
+          $scope.alumnos = respuesta;
+
+        }
+
+      })
+      .error(function(){
+        $scope.error = "Error: No hay Datos" ;
+    });
+    /*End Data favoritos*/
+  };
+
+    $scope.initAlumnos();
 
 
 }]);

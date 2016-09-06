@@ -1,5 +1,5 @@
-app.controller('acudientesCtrl', ['$scope','$mdDialog','$mdMedia','person',
-  function ($scope,$mdDialog,$mdMedia,person) {
+app.controller('acudientesCtrl', ['$scope','$mdDialog','$mdMedia','person','$http',
+  function ($scope,$mdDialog,$mdMedia,person,$http) {
 
     var originatorEv;
      $scope.openMenu = function($mdOpenMenu, ev) {
@@ -7,7 +7,7 @@ app.controller('acudientesCtrl', ['$scope','$mdDialog','$mdMedia','person',
        $mdOpenMenu(ev);
      };
 
-     $scope.addTeacher = function(ev,p) {
+     $scope.addAcudiente = function(ev,p) {
       person.setPerson(p);
       $mdDialog.show({
         controller: 'addPersonCtrl',
@@ -17,11 +17,32 @@ app.controller('acudientesCtrl', ['$scope','$mdDialog','$mdMedia','person',
         clickOutsideToClose:true
       })
       .then(function(answer) {
-        $scope.status = 'You said the information was "' + answer + '".';
+        $scope.initAcudientes();
       }, function() {
-        $scope.status = 'You cancelled the dialog.';
+        $scope.initAcudientes();
       });
     };
+
+
+    $scope.initAcudientes = function() {
+      /*Data favoritos*/
+      $http.post("servicios/readAcudientes.php")
+        .success(function(respuesta){
+
+          if (respuesta.error) {
+            $scope.error = respuesta.error;
+          }else{
+            $scope.acudientes = respuesta;
+          }
+
+        })
+        .error(function(){
+          $scope.error = "Error: No hay Datos" ;
+      });
+      /*End Data favoritos*/
+    };
+
+      $scope.initAcudientes();
 
 
 }]);

@@ -41,7 +41,7 @@ function($routeProvider) {
     templateUrl: 'views/docentes_adm.html',
     controller: 'docentesAdmCtrl'
   }).
-  when('/perfil_edit/:id', {
+  when('/perfil_edit/:guid', {
     templateUrl: 'views/perfil_edit.html',
     controller: 'perfilEditCtrl'
   }).
