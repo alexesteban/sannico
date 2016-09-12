@@ -54,6 +54,7 @@
         "assets/js/directives/gallery.js",
         "assets/js/directives/tabs.js",
         "assets/js/directives/back-button.js",
+        "assets/js/directives/fileread.js",
         "assets/js/services/add_person.js",
         "assets/js/services/create_guid.js"
       ]

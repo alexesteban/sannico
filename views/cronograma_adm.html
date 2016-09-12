@@ -11,13 +11,13 @@
   <div class="row-fluid">
 
 
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-repeat="evento in eventos">
       <div class="a-card a-card--heigth-500">
         <div class="a-card-wrapper">
           <div class="a-card-header">
             <div class="a-card-header__title-photo">
-              <h1>Próximo Evento</h1>
-              <p class="a-state active a-text-left">12-04-2016</p>
+              <h1>{{evento.titulo}}</h1>
+              <p class="a-state active a-text-left">{{evento.fecha}}</p>
             </div>
 
             <md-menu>
@@ -37,13 +37,11 @@
           </div>
         </div>
         <div class="a-card__image">
-          <img src="assets/img/eventos/evento01.jpg" alt="">
+          <img ng-src="assets/img/eventos/{{evento.foto}}" alt="">
         </div>
         <div class="a-card-wrapper">
           <div class="a-card-body">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
+            <p>{{evento.descripcion}}</p>
           </div>
         </div>
       </div>
