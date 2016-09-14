@@ -48,6 +48,7 @@
         "assets/js/controllers/galerias_adm.js",
         "assets/js/controllers/galeria_adm.js",
         "assets/js/controllers/add_galeria.js",
+        "assets/js/controllers/edit_event.js",
         "assets/js/controllers/app_adm.js",
         "assets/js/directives/header.js",
         "assets/js/directives/footer.js",

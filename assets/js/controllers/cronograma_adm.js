@@ -23,6 +23,22 @@ function ($scope,$mdDialog,$mdMedia,person,$http) {
     });
   };
 
+   $scope.editEvent = function(ev,p) {
+    person.setPerson(p);
+    $mdDialog.show({
+      controller: 'editEventCtrl',
+      templateUrl: 'views/edit_event.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      $scope.initEventos();
+    }, function() {
+      $scope.initEventos();
+    });
+  };
+
 
   $scope.initEventos = function() {
     /*Data favoritos*/
