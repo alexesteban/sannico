@@ -1,5 +1,5 @@
-app.controller('galeriasAdmCtrl', ['$scope','$mdDialog','$mdMedia','person',
-function ($scope,$mdDialog,$mdMedia,person) {
+app.controller('galeriasAdmCtrl', ['$scope','$mdDialog','$mdMedia','person','$http',
+function ($scope,$mdDialog,$mdMedia,person,$http) {
 
   var originatorEv;
    $scope.openMenu = function($mdOpenMenu, ev) {
@@ -7,7 +7,7 @@ function ($scope,$mdDialog,$mdMedia,person) {
      $mdOpenMenu(ev);
    };
 
-   $scope.addTeacher = function(ev,p) {
+   $scope.addGallery = function(ev,p) {
     person.setPerson(p);
     $mdDialog.show({
       controller: 'addGaleriaCtrl',
@@ -17,11 +17,48 @@ function ($scope,$mdDialog,$mdMedia,person) {
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
+      $scope.initGalerias();
     }, function() {
-      $scope.status = 'You cancelled the dialog.';
+      $scope.initGalerias();
     });
   };
 
+  $scope.deleteGallery = function(ev,idGallery) {
+    // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Quieres Eliminar la Galería?')
+            .textContent('Si la eliminas, se perderán todas las fotos que tienes dentro de esta galería')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('ELIMINAR')
+            .cancel('CANCELAR');
+      $mdDialog.show(confirm).then(function() {
+
+
+        $http.post("servicios/deleteGallery.php", {'idGallery': idGallery})
+          .success(function(respuesta){
+
+            $scope.initGalerias();
+
+          });
+
+      }, function() {
+
+      });
+  };
+
+  $scope.initGalerias = function(){
+    $http.post('servicios/readGallery.php')
+        .success(function(data) {
+          if (data.error) {
+            $scope.error = data.error;
+          }else{
+            $scope.galerias = data;
+
+          }
+        });
+  };
+
+  $scope.initGalerias();
 
 }]);

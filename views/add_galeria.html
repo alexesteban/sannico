@@ -1,32 +1,54 @@
 <md-dialog class="a-modal">
-  <div class="a-modal__header">
-    <h1>{{typePerson}} Galería </h1>
-    <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
-  </div>
-  <div class="a-modal__body">
-    <div class="row-fluid a-row-fix">
-      <div class="col-sm-12">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Título</label>
-          <input >
-        </md-input-container>
+
+  <form ng-show="!success" ng-submit="addGallery()">
+    <div class="a-modal__header">
+      <h1>{{typePerson}} Galería </h1>
+      <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
+    </div>
+    <div class="a-modal__body">
+      <div class="row-fluid a-row-fix">
+        <div class="col-sm-12">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Título</label>
+            <input ng-model="titulo" />
+          </md-input-container>
+        </div>
+      </div>
+      <div class="row-fluid a-row-fix">
+        <div class="col-sm-12">
+          <md-input-container class="md-block">
+            <label>Descripción</label>
+            <textarea ng-model="descripcion" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+        </div>
       </div>
     </div>
-    <div class="row-fluid a-row-fix">
-      <div class="col-sm-12">
-        <md-input-container class="md-block">
-          <label>Descripción</label>
-          <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
-        </md-input-container>
-      </div>
+    <div class="a-modal__footer">
+      <div ng-if="error" class="alert alert-danger" role="alert" timeout>{{error}}</div>
+      <button class="a-button button--color-violet a-text--uppercase">
+        {{typePerson}}
+      </button>
+      <button class="a-button button--color-silver" ng-click="cancel()">
+        CANCELAR
+      </button>
+    </div>
+  </form>
+
+
+  <div ng-show="success">
+    <div class="a-modal__header">
+      <h1>{{typePerson}} Galería </h1>
+      <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
+    </div>
+    <div class="a-modal__body">
+      <h3 class="a-txt-cent">{{success}}</h3>
+    </div>
+    <div class="a-modal__footer">
+      <button class="a-button button--color-green" ng-click="cancel()">
+        ACEPTAR
+      </button>
     </div>
   </div>
-  <div class="a-modal__footer">
-    <button class="a-button button--color-violet a-text--uppercase">
-      {{typePerson}}
-    </button>
-    <button class="a-button button--color-silver" ng-click="cancel()">
-      CANCELAR
-    </button>
-  </div>
+
+
 </md-dialog>

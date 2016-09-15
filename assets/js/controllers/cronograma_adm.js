@@ -39,6 +39,32 @@ function ($scope,$mdDialog,$mdMedia,person,$http) {
     });
   };
 
+  $scope.deleteEvent = function(ev,idEvento) {
+    // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Quieres Borrar el Evento?')
+            .textContent('Este Evento se borrrá para siempre')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('ELIMINAR')
+            .cancel('CANCELAR');
+      $mdDialog.show(confirm).then(function() {
+
+
+        $http.post("servicios/deleteEvent.php", {'idEvento': idEvento})
+          .success(function(respuesta){
+
+            $scope.initEventos();
+
+          });
+
+      }, function() {
+
+      });
+
+
+  };
+
 
   $scope.initEventos = function() {
     /*Data favoritos*/
