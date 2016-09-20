@@ -12,7 +12,7 @@
 
   <!-- CARD -->
     <div class="a-card a-card__flex" ng-repeat="galeria in galerias">
-      <a href="#/galeria_adm/1">
+      <a href="#/galeria_adm/{{galeria.id}}">
         <div class="a-card-wrapper">
           <div class="a-card-header">
             <div class="a-card-header__title-photo">
@@ -24,7 +24,7 @@
             </md-button>
             <md-menu-content>
               <md-menu-item>
-                <md-button ng-click="addGallery($event,'Editar')"><i class="flaticon-edit"></i>  Editar</md-button>
+                <md-button ng-click="editGallery($event,galeria.id)"><i class="flaticon-edit"></i>  Editar</md-button>
               </md-menu-item>
               <md-menu-item>
                 <md-button ng-click="deleteGallery($event,galeria.id)"><i class="flaticon-delete-button"></i>Eliminar</md-button>

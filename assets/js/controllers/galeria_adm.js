@@ -1,5 +1,7 @@
-app.controller('galeriaAdmCtrl', ['$scope','$mdDialog','$mdMedia','person',
-function ($scope,$mdDialog,$mdMedia,person) {
+app.controller('galeriaAdmCtrl', ['$scope','$mdDialog','$mdMedia','person','$routeParams','$http',
+function ($scope,$mdDialog,$mdMedia,person,$routeParams,$http) {
+
+  var idGaleria = $routeParams.id;
 
   var originatorEv;
    $scope.openMenu = function($mdOpenMenu, ev) {
@@ -7,7 +9,8 @@ function ($scope,$mdDialog,$mdMedia,person) {
      $mdOpenMenu(ev);
    };
 
-   $scope.addPhoto = function(ev) {
+   $scope.addPhoto = function(ev,p) {
+     person.setPerson(p);
     $mdDialog.show({
       controller: 'addPhotoCtrl',
       templateUrl: 'views/add_photo.html',
@@ -16,11 +19,35 @@ function ($scope,$mdDialog,$mdMedia,person) {
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.status = 'You said the information was "' + answer + '".';
+      $scope.initPhotos();
     }, function() {
-      $scope.status = 'You cancelled the dialog.';
+        $scope.initPhotos();
     });
   };
+
+  $scope.initPhotos = function(){
+
+    $http.post('servicios/readPhotos.php',{'id':idGaleria})
+        .success(function(data) {
+          if (data.error) {
+            $scope.error = data.error;
+          }else{
+            $scope.photos = data;
+          }
+        });
+
+      $http.post('servicios/readGaleria.php',{'id':idGaleria})
+          .success(function(data) {
+            if (data.error) {
+              $scope.error = data.error;
+            }else{
+              $scope.galeria = data;
+            }
+        });
+
+  };
+
+  $scope.initPhotos();
 
 
 

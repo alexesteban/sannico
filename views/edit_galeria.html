@@ -1,15 +1,16 @@
 <md-dialog class="a-modal">
-  <form ng-show="!success" ng-submit="uploadPhoto()">
+
+  <form ng-show="!success" ng-submit="editGaleria()">
     <div class="a-modal__header">
-      <h1>Agregar una Foto </h1>
+      <h1>Editar Galería </h1>
       <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
     </div>
     <div class="a-modal__body">
       <div class="row-fluid a-row-fix">
         <div class="col-sm-12">
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Imagen</label>
-            <input type="file" fileread="photo" class="form-control"  >
+            <label>Título</label>
+            <input ng-model="titulo" />
           </md-input-container>
         </div>
       </div>
@@ -25,7 +26,7 @@
     <div class="a-modal__footer">
       <div ng-if="error" class="alert alert-danger" role="alert" timeout>{{error}}</div>
       <button class="a-button button--color-violet a-text--uppercase" type="submit">
-        CREAR
+        EDITAR
       </button>
       <button class="a-button button--color-silver" ng-click="cancel()">
         CANCELAR
@@ -33,9 +34,10 @@
     </div>
   </form>
 
+
   <div ng-show="success">
     <div class="a-modal__header">
-      <h1>Agregar Foto</h1>
+      <h1>Editar Galería </h1>
       <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
     </div>
     <div class="a-modal__body">

@@ -4,43 +4,17 @@
 </div>
 
 <div class="a-title__internal">
-  SEMANA CULTURAL 2015
-  <p>Semana Cultural que se realizó del 6 al 11 de Junio</p>
+  {{galeria.titulo}}
+  <p>{{galeria.descripcion}}</p>
 
-  <a class="a-btn__add" href ng-click="addPhoto($event)" >
+  <a class="a-btn__add" href ng-click="addPhoto($event,galeria.id)" >
     <i class="flaticon-plus"></i>  AGREGAR
   </a>
 </div>
 
-
-
-<div gallery class="gallery" >
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-  </div>
-  <div class="image">
-    <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
+<div gallery class="gallery">
+  <div class="image" ng-repeat="photo in photos">
+    <a href="assets/img/galeria/{{photo.imagen}}" class="big"><img ng-src="assets/img/galeria/{{photo.imagen}}" alt="" title="{{photo.titulo}}" /></a>
   </div>
 </div>
 

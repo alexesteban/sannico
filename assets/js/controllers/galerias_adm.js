@@ -23,6 +23,22 @@ function ($scope,$mdDialog,$mdMedia,person,$http) {
     });
   };
 
+  $scope.editGallery = function(ev,p) {
+   person.setPerson(p);
+   $mdDialog.show({
+     controller: 'editGaleriaCtrl',
+     templateUrl: 'views/edit_galeria.html',
+     parent: angular.element(document.body),
+     targetEvent: ev,
+     clickOutsideToClose:true
+   })
+   .then(function(answer) {
+     $scope.initGalerias();
+   }, function() {
+     $scope.initGalerias();
+   });
+ };
+
   $scope.deleteGallery = function(ev,idGallery) {
     // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
