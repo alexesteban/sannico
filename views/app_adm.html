@@ -16,7 +16,7 @@
         <!-- TABS -->
           <ul tabs class="nav nav-pills nav-justified" role="tablist">
             <li class="active"><a href="#contenido" role="tab" data-toggle="tab" >CONTENIDO</a></li>
-            <li><a href="#banners" role="tab" data-toggle="tab" >BANNERS</a></li>
+            <!--li><a href="#banners" role="tab" data-toggle="tab" >BANNERS</a></li-->
             <li><a href="#periodos" role="tab" data-toggle="tab" >PERIODOS</a></li>
           </ul>
           <!-- END TABS -->
@@ -28,58 +28,98 @@
 
     <div class="a-panel-right tab-content a-card__flex">
       <div role="tabpanel" class="tab-pane active" id="contenido">
+
+      <form ng-submit="updContenido()">
+          <div class="row">
+
+              <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Institucional</label>
+                  <textarea ng-model="institucional" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+                </md-input-container>
+              </div>
+
+              <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Misión</label>
+                  <textarea ng-model="mision" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+                </md-input-container>
+              </div>
+
+              <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Visión</label>
+                  <textarea ng-model="vision" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+                </md-input-container>
+              </div>
+
+              <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Servicios</label>
+                  <textarea ng-model="servicios" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+                </md-input-container>
+              </div>
+
+            </div>
+
+            <hr>
+
+            <div ng-if="errorCont" class="alert alert-danger" role="alert" timeout>{{errorCont}}</div>
+            <div ng-if="successCon" class="alert alert-success" role="success" timeout>{{successCon}}</div>
+
+            <div class="text-center">
+              <button class="a-button button--color-violet a-text--uppercase" type="submit">
+                ACTUALIZAR
+              </button>
+            </div>
+
+      </form>
+
+
+<hr>
+
+
         <div class="row">
           <div class="col-sm-12">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Institucional</label>
-              <input >
-            </md-input-container>
-          </div>
+            <form ng-submit="updEscudo()">
 
-          <div class="col-sm-12">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Misión</label>
-              <input >
-            </md-input-container>
-          </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <label>Escudo</label>
+                  <input type="file">
+                </div>
+                <div class="col-sm-4">
+                  <button class="a-button button--color-violet a-text--uppercase" type="submit">
+                    ACTUALIZAR
+                  </button>
+                </div>
+              </div>
 
-          <div class="col-sm-12">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Visión</label>
-              <input >
-            </md-input-container>
-          </div>
-
-          <div class="col-sm-12">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Servicios</label>
-              <input >
-            </md-input-container>
+            </form>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Escudo</label>
-              <input type="file">
-            </md-input-container>
-          </div>
-          <div class="col-sm-6">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Bandera</label>
-              <input type="file">
-            </md-input-container>
-          </div>
-        </div>
-
         <hr>
+        <div class="row">
+          <div class="col-sm-12">
+            <form ng-submit="updBandera">
 
-        <div class="text-center">
-          <button class="a-button button--color-violet a-text--uppercase">
-            ACTUALIZAR
-          </button>
+              <div class="row">
+                <div class="col-sm-8">
+                  <label>Bandera</label>
+                  <input type="file">
+                </div>
+                <div class="col-sm-4">
+                  <button class="a-button button--color-violet a-text--uppercase" type="submit">
+                    ACTUALIZAR
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
         </div>
+
+
 
         <br>
 

@@ -10,7 +10,9 @@
 
 	$miArray = array(
     	'titulo' 		=> $rs["titulo"],
+    	'fecha' 		=> $rs["fecha"],
     	'hora' 		=> $rs["hora"],
+    	'foto' 		=> $rs["foto"],
     	'lugar' 		=> $rs["lugar"],
     	'descripcion' 		=> $rs["descripcion"]
   );

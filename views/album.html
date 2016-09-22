@@ -1,6 +1,6 @@
 <div class="a-section">
   <div class="a-title__internal">
-    Semana Cultural 2015
+    {{galeria.titulo}}
   </div>
 </div>
 
@@ -12,46 +12,14 @@
           <div class="col-sm-8">
 
             <div gallery class="gallery" >
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
-              </div>
-              <div class="image">
-                <a href="assets/img/paginas_web.png" class="big"><img src="assets/img/paginas_web.png" alt="" title="Descripcion de la image" /></a>
+              <div class="image" ng-repeat="photo in photos">
+                <a href="assets/img/galeria/{{photo.imagen}}" class="big"><img ng-src="assets/img/galeria/{{photo.imagen}}" alt="" title="{{photo.titulo}}" /></a>
               </div>
             </div>
 
           </div>
           <div class="col-sm-4">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
+            {{galeria.descripcion}}
           </div>
         </div>
       </div>

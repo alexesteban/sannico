@@ -6,131 +6,29 @@
 <div class="a-section a-section--background-white">
   <div class="row-fluid">
 
-    <div class="col-sm-4">
-      <a href="#/evento/1">
+    <div class="col-sm-4" ng-repeat="evento in eventos">
+      <a href="#/evento/{{evento.id}}">
       <div class="a-card a-card--heigth-500">
         <div class="a-card-wrapper">
           <div class="a-card-header">
             <div class="a-card-header__title-photo">
-                <h1>Próximo Evento</h1>
+                <h1>{{evento.titulo}}</h1>
             </div>
             <div class="a-card-header__pin-right a-text--color-green">
-              12-04-2016
+              {{evento.fecha}}
             </div>
           </div>
         </div>
         <div class="a-card__image">
-          <img src="assets/img/eventos/evento01.jpg" alt="">
+          <img ng-src="assets/img/eventos/{{evento.foto}}" alt="">
         </div>
         <div class="a-card-wrapper">
           <div class="a-card-body">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
+            <p>{{evento.descripcion}}</p>
           </div>
         </div>
       </div>
     </a>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="a-card a-card--heigth-500">
-        <div class="a-card-wrapper">
-          <div class="a-card-header">
-            <div class="a-card-header__title-photo">
-              <h1>Próximo Evento</h1>
-            </div>
-            <div class="a-card-header__pin-right a-text--color-green">
-              12-04-2016
-            </div>
-          </div>
-        </div>
-        <div class="a-card__image">
-          <img src="assets/img/eventos/evento01.jpg" alt="">
-        </div>
-        <div class="a-card-wrapper">
-          <div class="a-card-body">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="a-card a-card--heigth-500">
-        <div class="a-card-wrapper">
-          <div class="a-card-header">
-            <div class="a-card-header__title-photo">
-              <h1>Próximo Evento</h1>
-            </div>
-            <div class="a-card-header__pin-right a-text--color-green">
-              12-04-2016
-            </div>
-          </div>
-        </div>
-        <div class="a-card__image">
-          <img src="assets/img/eventos/evento01.jpg" alt="">
-        </div>
-        <div class="a-card-wrapper">
-          <div class="a-card-body">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="a-card a-card--heigth-500">
-        <div class="a-card-wrapper">
-          <div class="a-card-header">
-            <div class="a-card-header__title-photo">
-              <h1>Próximo Evento</h1>
-            </div>
-            <div class="a-card-header__pin-right a-text--color-green">
-              12-04-2016
-            </div>
-          </div>
-        </div>
-        <div class="a-card__image">
-          <img src="assets/img/eventos/evento01.jpg" alt="">
-        </div>
-        <div class="a-card-wrapper">
-          <div class="a-card-body">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="a-card a-card--heigth-500">
-        <div class="a-card-wrapper">
-          <div class="a-card-header">
-            <div class="a-card-header__title-photo">
-              <h1>Próximo Evento</h1>
-            </div>
-            <div class="a-card-header__pin-right a-text--color-green">
-              12-04-2016
-            </div>
-          </div>
-        </div>
-        <div class="a-card__image">
-          <img src="assets/img/eventos/evento01.jpg" alt="">
-        </div>
-        <div class="a-card-wrapper">
-          <div class="a-card-body">
-            <p>
-              In corpus linguistics, a collocation is a sequence of words or terms that co-occur more often than would be expected by chance. In phraseology, collocation is a sub-type of phraseme. An example of a phraseological collocation, as propounded by Michael Halliday
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
