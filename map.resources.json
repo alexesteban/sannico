@@ -58,7 +58,8 @@
         "assets/js/directives/back-button.js",
         "assets/js/directives/fileread.js",
         "assets/js/services/add_person.js",
-        "assets/js/services/create_guid.js"
+        "assets/js/services/create_guid.js",
+        "assets/js/services/auth.js"
       ]
     }
   }

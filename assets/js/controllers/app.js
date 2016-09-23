@@ -1,12 +1,13 @@
-app.controller('appCtrl', ['$scope','$http','$cookies', '$location',
-  function($scope,$http,$cookies,$location) {
+app.controller('appCtrl', ['$scope','$http','$cookies', '$location','auth',
+  function($scope,$http,$cookies,$location,auth) {
     $scope.loggedIn = $cookies.get('logued');
 
     $scope.logued = function(){
       $scope.loggedIn = $cookies.get('logued');
       $scope.callAvatar();
       $scope.callRol();
-      $location.path('/dashboard/1');
+      auth.setAuth($scope.loggedIn);
+      $location.path('/dashboard/' + $scope.loggedIn );
     };
 
     $scope.logout = function(){
@@ -21,6 +22,7 @@ app.controller('appCtrl', ['$scope','$http','$cookies', '$location',
 
           if (respuesta !== '') {
             $scope.avatar = respuesta[0].avatar;
+            return true;
           }
 
         })
@@ -34,13 +36,13 @@ app.controller('appCtrl', ['$scope','$http','$cookies', '$location',
         .success(function(respuesta){
 
           $scope.rol = respuesta[0].rol;
+          return $scope.rol;
 
         })
         .error(function(){
           $scope.rol = 0;
       });
     };
-
 
 
 
