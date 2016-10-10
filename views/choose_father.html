@@ -1,0 +1,30 @@
+<md-dialog class="a-modal">
+  <form ng-show="!success" ng-submit="addPerson(typePerson)">
+
+    <div class="a-modal__header">
+      <h1>Agrega un acudiente</h1>
+      <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
+    </div>
+    <div class="a-modal__body">
+
+      <div class="row-fluid" class="list_scroll" >
+
+        <div class="col-sm-12" ng-repeat="father in fathers">
+          <div class="a-list__alumn a-list__alumn--space " ng-click="chooseFather(father.guid)">
+              <div class="a-list__photo">
+                <i class="flaticon-boy-broad-smile"></i>
+              </div>
+              <div class="a-list__name">
+                {{father.nombres}}
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+
+</md-dialog>

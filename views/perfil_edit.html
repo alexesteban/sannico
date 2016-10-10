@@ -6,16 +6,26 @@
 <div class="a-card__flex-wrapper">
   <div class="a-card__flex a-title-icon">
     <div class="a-tittle-icon__wrapper">
-      <i class="flaticon-educator-1"></i>
+      <i  ng-if="rol == 2 && genero == 'F'" class="flaticon-educator-1"></i>
+      <i  ng-if="rol == 2 && genero == 'M'" class="flaticon-educator"></i>
+      <i  ng-if="rol == 3 && genero == 'M'" class="flaticon-boy-broad-smile"></i>
+      <i  ng-if="rol == 3 && genero == 'F'" class="flaticon-smiling-girl"></i>
+      <i  ng-if="rol == 4" class="flaticon-command"></i>
     </div>
     <div class="a-tittle-info__wrapper">
-      <span>Martha Cecilia Romero Castro</span>
+      <span>{{nombres}} {{apellidos}}</span>
       <span class="a-card__grade">8° Grado</span>
     </div>
   </div>
   <div class="a-card__flex a-title-icon text-right">
-    <i class="flaticon-educator-1"></i>
-    <span>Docente</span>
+    <i  ng-if="rol == 2 && genero == 'F'" class="flaticon-educator-1"></i>
+    <i  ng-if="rol == 2 && genero == 'M'" class="flaticon-educator"></i>
+    <i  ng-if="rol == 3 && genero == 'M'" class="flaticon-boy-broad-smile"></i>
+    <i  ng-if="rol == 3 && genero == 'F'" class="flaticon-smiling-girl"></i>
+    <i  ng-if="rol == 4" class="flaticon-command"></i>
+    <span ng-if="rol == 2">Docente</span>
+    <span ng-if="rol == 3">Alumno</span>
+    <span ng-if="rol == 4">Acudiente</span>
   </div>
 </div>
 
@@ -27,7 +37,11 @@
           <div class="a-panel-left">
 
             <div class="a-perfil__photo">
-              <i class="flaticon-educator-1"></i>
+              <i  ng-if="!avatar && rol == 2 && genero == 'F'" class="flaticon-educator-1"></i>
+              <i  ng-if="!avatar && rol == 2 && genero == 'M'" class="flaticon-educator"></i>
+              <i  ng-if="!avatar && rol == 3 && genero == 'M'" class="flaticon-boy-broad-smile"></i>
+              <i  ng-if="!avatar && rol == 3 && genero == 'F'" class="flaticon-smiling-girl"></i>
+              <i  ng-if="!avatar && rol == 4" class="flaticon-command"></i>
               <div class="a-perfil__photo-edit-icon">
                 <i class="flaticon-photo-camera"></i>
               </div>
@@ -62,7 +76,7 @@
                     </md-input-container>
 
                     <div class="row">
-                      <div class="col-sm-4">
+                      <!--div class="col-sm-4">
                         <md-input-container>
                          <label>Tipo Doc</label>
                          <md-select ng-model="tipoDoc">
@@ -71,11 +85,11 @@
                            </md-option>
                          </md-select>
                        </md-input-container>
-                      </div>
-                      <div class="col-sm-8">
+                     </div-->
+                      <div class="col-sm-12">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Documento</label>
-                          <input ng-model="user.firstName">
+                          <input ng-model="documento">
                         </md-input-container>
                       </div>
                     </div>
@@ -84,20 +98,20 @@
                       <div class="col-sm-6">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Teléfono Domicilio</label>
-                          <input ng-model="user.firstName">
+                          <input ng-model="telefono">
                         </md-input-container>
                       </div>
                       <div class="col-sm-6">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Celular</label>
-                          <input ng-model="user.firstName">
+                          <input ng-model="celular">
                         </md-input-container>
                       </div>
                     </div>
 
                     <md-input-container  class="md-block" flex-gt-xs>
                       <label>Email</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="email">
                     </md-input-container>
 
                   </div>
@@ -114,14 +128,14 @@
                       <div class="col-sm-6">
                         <md-input-container  class="md-block" flex-gt-xs>
                           <label>Estado Civil</label>
-                          <input ng-model="user.firstName">
+                          <input ng-model="escivil">
                         </md-input-container>
                       </div>
                     </div>
 
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Dirección Domicilio</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="direccion">
                     </md-input-container>
 
                     <md-button class="a-perfil__reset-password">
@@ -132,24 +146,36 @@
                 </div>
 
 
+              <div ng-if="rol == 3">
                 <div class="a-peril__title-info">Acudientes</div>
-
                 <div class="row">
                     <!-- Acudiente -->
-                    <div class="col-sm-12">
-                      <a href="#/perfil_edit/1">
+                    <div class="col-sm-12" ng-repeat="acudiente in acudientes">
+                      <a href="#/perfil_edit/{{acudiente.guid}}" style="width: 96%; display: block;">
                       <div class="a-list__alumn a-list__alumn--space ">
                           <div class="a-list__photo">
                             <i class="flaticon-boy-broad-smile"></i>
                           </div>
                           <div class="a-list__name">
-                            Luz Amaparo Gutierrez Quintero
+                            {{acudiente.nombres}} {{acudiente.apellidos}}
                           </div>
                       </div>
                       </a>
+                      <div style="position:absolute; right:1em; top:1em" ng-click="deleteFather(acudiente.guid)">
+                        <i style="color:red" class="flaticon-close-circular-button-of-a-cross"></i>
+                      </div>
                     </div>
                     <!-- End Acudiente -->
                 </div>
+
+                <div class="a-button-form">
+                  <a href="javascript:void(0)" class="a-button button--color-violet a-text--uppercase" ng-click="addFather($event,guid)">
+                    <i class="flaticon-plus"></i> AGREGAR
+                  </a>
+                </div>
+
+
+              </div>
 
 
             </div>

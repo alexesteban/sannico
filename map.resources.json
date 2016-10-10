@@ -51,6 +51,7 @@
         "assets/js/controllers/edit_event.js",
         "assets/js/controllers/app_adm.js",
         "assets/js/controllers/edit_galeria.js",
+        "assets/js/controllers/choose_father.js",
         "assets/js/directives/header.js",
         "assets/js/directives/footer.js",
         "assets/js/directives/gallery.js",

@@ -9,6 +9,7 @@
   $rs = $result->fetch_array(MYSQLI_ASSOC);
 
 	$miArray = array(
+      'nombres' 		=> $rs["nombres"],
     	'apellidos' 		=> $rs["apellidos"],
     	'avatar' 		=> $rs["avatar"],
     	'celular' 		=> $rs["celular"],
@@ -17,9 +18,11 @@
     	'guid' 		=> $rs["guid"],
     	'id' 		=> $rs["id"],
     	'nacimiento' 		=> $rs["nacimiento"],
-    	'nombres' 		=> $rs["nombres"],
     	'rol' 		=> $rs["rol"],
     	'telefono' 		=> $rs["telefono"],
+    	'documento' 		=> $rs["documento"],
+    	'escivil' 		=> $rs["escivil"],
+    	'direccion' 		=> $rs["direccion"],
   );
 
 

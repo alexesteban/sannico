@@ -105,6 +105,11 @@ a:hover, a:focus {
 .a-row-fix {
   overflow: hidden; }
 
+.list_scroll {
+  max-width: 600px;
+  max-height: 300px;
+  overflow-y: auto; }
+
 .a-logo {
   max-width: 300px; }
   .a-logo img {
