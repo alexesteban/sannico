@@ -69,10 +69,14 @@
                 <div class="a-peril__title-info">Información Personal</div>
 
                 <div class="row">
+
+                <form ng-submit="updateUser()">
+
+                  <div class="row">
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Nombres</label>
-                      <input ng-model="nombres">
+                      <input ng-model="nombres" required>
                     </md-input-container>
 
                     <div class="row">
@@ -89,7 +93,7 @@
                       <div class="col-sm-12">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Documento</label>
-                          <input ng-model="documento">
+                          <input ng-model="documento" required>
                         </md-input-container>
                       </div>
                     </div>
@@ -111,21 +115,21 @@
 
                     <md-input-container  class="md-block" flex-gt-xs>
                       <label>Email</label>
-                      <input ng-model="email">
+                      <input ng-model="email" required>
                     </md-input-container>
 
                   </div>
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Apellidos</label>
-                      <input ng-model="apellidos">
+                      <input ng-model="apellidos" required>
                     </md-input-container>
 
                     <div class="row" layout-gt-xs="row">
-                      <div class="col-sm-6">
+                      <!--div class="col-sm-6">
                         <md-datepicker ng-model="user.submissionDate" md-placeholder="Nacimiento"></md-datepicker>
-                      </div>
-                      <div class="col-sm-6">
+                      </div-->
+                      <div class="col-sm-12">
                         <md-input-container  class="md-block" flex-gt-xs>
                           <label>Estado Civil</label>
                           <input ng-model="escivil">
@@ -143,6 +147,14 @@
                     </md-button>
 
                   </div>
+                </div>
+
+                  <div ng-if="errUser" class="alert alert-danger" role="alert" timeout>{{errUser}}</div>
+
+                  <div class="a-button-form">
+                    <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
+                  </div>
+                </form>
                 </div>
 
 
@@ -183,43 +195,56 @@
             <div role="tabpanel" class="tab-pane" id="academica">
               <div class="a-peril__title-info">Información Académica</div>
               <!-- Professional Title -->
+              <div ng-show="rol != 3">
               <div>
+                <form ng-submit="updAcademicAdult(idAcademicAd)">
                 <div class="row">
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Nivel Académico</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="nivel_academico">
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Programa Académico</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="programa_academico">
                     </md-input-container>
                   </div>
                   <div class="col-sm-6">
+
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Institución</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="institucion">
                     </md-input-container>
 
-                    <md-datepicker ng-model="user.submissionDate" md-placeholder="Fecha de Grado"></md-datepicker>
+                    <md-datepicker ng-model="fecha_grado" md-placeholder="Fecha de Grado"></md-datepicker>
+
                   </div>
                 </div>
 
                 <md-input-container class="md-block" flex-gt-sm>
                   <label>Titulo Obtenido</label>
-                  <input ng-model="user.firstName">
+                  <input ng-model="titulo">
                 </md-input-container>
+
+                <div class="a-button-form">
+                  <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
+                </div>
+
+                </form>
               </div>
               <!-- End Professional Tittle -->
 
               <hr>
 
-              <a href="javascript:void(0)" class="a-button__add-form">
+              <!--a href="javascript:void(0)" class="a-button__add-form">
                 <i class="flaticon-plus"></i>
                 <span>Agregar</span>
-              </a>
+              </a-->
 
+              </div>
+
+              <div ng-if="show == 3">
               <div class="row">
                 <!-- Alumns Academic -->
                 <div class="col-sm-4">
@@ -304,6 +329,7 @@
                   </div>
                 </div>
                 <!-- End Alumns Academic -->
+              </div>
               </div>
 
 
@@ -342,20 +368,21 @@
               <div class="a-peril__title-info">Información Laboral</div>
 
               <!-- Professional Title -->
+              <form ng-submit="updLaboralAdult(idLaboralAd)">
               <div>
                 <div class="row">
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Nombre de la Compañía</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="nombre_empresa">
                     </md-input-container>
 
                     <div class="row">
                       <div class="col-sm-6">
-                        <md-datepicker ng-model="user.submissionDate" md-placeholder="Fecha Inicio"></md-datepicker>
+                        <md-datepicker ng-model="fecha_inicio" md-placeholder="Fecha Inicio"></md-datepicker>
                       </div>
                       <div class="col-sm-6">
-                        <md-datepicker ng-model="user.submissionDate" md-placeholder="Fecha Fin"></md-datepicker>
+                        <md-datepicker ng-model="fecha_fin" md-placeholder="Fecha Fin"></md-datepicker>
                       </div>
                     </div>
 
@@ -363,91 +390,86 @@
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Cargo Desempeñado</label>
-                      <input ng-model="user.firstName">
+                      <input ng-model="cargo">
                     </md-input-container>
 
-                    <md-input-container class="md-block">
-                      <label>¿Actualmente se encuentra en esta compañía?</label>
-                      <md-select ng-model="myModel" required>
-                        <md-option value="S">SI</md-option>
-                        <md-option value="N">NO</md-option>
-                      </md-select>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Función del Cargo</label>
+                      <input ng-model="funcion">
                     </md-input-container>
 
                   </div>
                 </div>
 
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>Función del Cargo</label>
-                  <input ng-model="user.firstName">
-                </md-input-container>
+
               </div>
               <!-- End Professional Tittle -->
 
+              <div class="a-button-form">
+                <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
+              </div>
+
               <hr>
 
-              <a href="javascript:void(0)" class="a-button__add-form">
+              <!--a href="javascript:void(0)" class="a-button__add-form">
                 <i class="flaticon-plus"></i>
                 <span>Agregar</span>
-              </a>
+              </a-->
+
+            </form>
 
             </div>
 
             <div role="tabpanel" class="tab-pane" id="medica">
               <div class="a-peril__title-info">Información Médica</div>
 
+            <form ng-submit="updInfoMedica(idinfoMedica)">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="row">
                     <div class="col-sm-4">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Altura (mts)</label>
-                        <input ng-model="user.firstName">
+                        <input ng-model="altura">
                       </md-input-container>
                     </div>
                     <div class="col-sm-4">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Peso (kgs)</label>
-                        <input ng-model="user.firstName">
+                        <input ng-model="peso">
                       </md-input-container>
                     </div>
                     <div class="col-sm-4">
-                      <md-input-container class="md-block">
+                      <md-input-container class="md-block" flex-gt-sm>
                         <label>RH</label>
-                        <md-select ng-model="myModel" required>
-                          <md-option value="S">O+</md-option>
-                          <md-option value="N">O-</md-option>
-                        </md-select>
+                        <input ng-model="rh">
                       </md-input-container>
                     </div>
                   </div>
 
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Clínica Preferída</label>
-                    <input ng-model="user.firstName">
+                    <input ng-model="clinica">
                   </md-input-container>
 
                 </div>
                 <div class="col-sm-6">
-                  <md-input-container class="md-block">
+                  <md-input-container class="md-block" flex-gt-sm>
                     <label>Entidad Promotora de Salud (EPS)</label>
-                    <md-select ng-model="myModel" required>
-                      <md-option value="S">Cafesalud</md-option>
-                      <md-option value="N">Sanitas</md-option>
-                    </md-select>
+                    <input ng-model="eps">
                   </md-input-container>
 
                   <div class="row">
                     <div class="col-sm-6">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Médico Particular</label>
-                        <input ng-model="user.firstName">
+                        <input ng-model="medico">
                       </md-input-container>
                     </div>
                     <div class="col-sm-6">
                       <md-input-container class="md-block" flex-gt-sm>
-                        <label>Teléfono</label>
-                        <input ng-model="user.firstName">
+                        <label>Teléfono del Médico</label>
+                        <input ng-model="telefono_medico">
                       </md-input-container>
                     </div>
                   </div>
@@ -457,7 +479,7 @@
 
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Observaciones</label>
-                <input ng-model="user.firstName">
+                <input ng-model="observaciones">
               </md-input-container>
 
               <br>
@@ -468,16 +490,22 @@
                 <div class="col-sm-6">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Nombre Contácto</label>
-                    <input ng-model="user.firstName">
+                    <input ng-model="nombre_contacto">
                   </md-input-container>
                 </div>
                 <div class="col-sm-6">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Teléfono</label>
-                    <input ng-model="user.firstName">
+                    <input ng-model="telefono_contacto">
                   </md-input-container>
                 </div>
               </div>
+
+              <div class="a-button-form">
+                <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
+              </div>
+
+            </form>
 
             </div>
 
