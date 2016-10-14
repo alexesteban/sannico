@@ -14,7 +14,7 @@
     </div>
     <div class="a-tittle-info__wrapper">
       <span>{{nombres}} {{apellidos}}</span>
-      <span class="a-card__grade">8° Grado</span>
+      <span class="a-card__grade" ng-if="rol == 3">{{grado}}° Grado</span>
     </div>
   </div>
   <div class="a-card__flex a-title-icon text-right">
@@ -47,17 +47,18 @@
               </div>
             </div>
 
-            <div class="text-center">
+            <br>
+            <!--div class="text-center">
               <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" >Activo</md-switch>
-            </div>
+            </div-->
 
             <div>
               <!-- TABS -->
 							  <ul tabs class="nav nav-pills nav-stacked" role="tablist">
 							  	<li class="active"><a href="#personal" role="tab" data-toggle="tab">PERSONAL</a></li>
 							    <li><a href="#academica" role="tab" data-toggle="tab">ACADÉMICA</a></li>
-							    <li><a href="#laboral" role="tab" data-toggle="tab">LABORAL</a></li>
-							    <li><a href="#asistencia" role="tab" data-toggle="tab">ASISTENCIA</a></li>
+							    <li><a href="#laboral" role="tab" data-toggle="tab" ng-show="rol != 3">LABORAL</a></li>
+							    <li><a href="#asistencia" role="tab" data-toggle="tab" ng-show="rol == 3">ASISTENCIA</a></li>
 							    <li><a href="#medica" role="tab" data-toggle="tab">MÉDICA</a></li>
 							  </ul>
                 <!-- END TABS -->
@@ -186,6 +187,35 @@
                   </a>
                 </div>
 
+              </div>
+
+              <div ng-if="rol == 4">
+                <div class="a-peril__title-info">Alumnos</div>
+                <div class="row">
+                    <!-- Alumno -->
+                    <div class="col-sm-12" ng-repeat="alumno in alumnos">
+                      <a href="#/perfil_edit/{{alumno.guid}}" style="width: 96%; display: block;">
+                      <div class="a-list__alumn a-list__alumn--space ">
+                          <div class="a-list__photo">
+                            <i class="flaticon-boy-broad-smile"></i>
+                          </div>
+                          <div class="a-list__name">
+                            {{alumno.nombres}} {{alumno.apellidos}}
+                          </div>
+                      </div>
+                      </a>
+                      <div style="position:absolute; right:1em; top:1em" ng-click="deleteAlumno(alumno.guid)">
+                        <i style="color:red" class="flaticon-close-circular-button-of-a-cross"></i>
+                      </div>
+                    </div>
+                    <!-- End Alumno -->
+                </div>
+
+                <div class="a-button-form">
+                  <a href="javascript:void(0)" class="a-button button--color-violet a-text--uppercase" ng-click="addAlumno($event,guid)">
+                    <i class="flaticon-plus"></i> AGREGAR
+                  </a>
+                </div>
 
               </div>
 
@@ -244,7 +274,7 @@
 
               </div>
 
-              <div ng-if="show == 3">
+              <div ng-show="rol == 3">
               <div class="row">
                 <!-- Alumns Academic -->
                 <div class="col-sm-4">

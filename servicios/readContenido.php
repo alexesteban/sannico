@@ -12,7 +12,8 @@
     	'institucional' 		=> $rs["institucional"],
     	'mision' 		=> $rs["mision"],
     	'vision' 		=> $rs["vision"],
-    	'servicios' 		=> $rs["servicios"]
+    	'servicios' 		=> $rs["servicios"],
+    	'year' 		=> $rs["actual_year"]
   );
 
 

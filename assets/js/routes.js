@@ -61,6 +61,10 @@ function($routeProvider) {
     templateUrl: 'views/adm_asignatura.html',
     controller: 'admAsignaturaCtrl'
   }).
+  when('/asignaturas_adm', {
+    templateUrl: 'views/asignaturas_adm.html',
+    controller: 'asignaturasAdmCtrl'
+  }).
   when('/calificar/:id', {
     templateUrl: 'views/calificar.html',
     controller: 'calificarCtrl'

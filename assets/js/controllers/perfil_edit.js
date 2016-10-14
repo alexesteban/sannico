@@ -33,6 +33,8 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
           $scope.documento = data.documento;
           $scope.escivil = data.escivil;
           $scope.direccion = data.direccion;
+          $scope.grado = data.grado;
+          $scope.codigo = data.codigo;
         }
 
       })
@@ -43,21 +45,31 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
   };
 
   $scope.initAcudientes = function() {
-    /*Data favoritos*/
     $http.post("servicios/readAcudientesForStudent.php", {'guid': $scope.guid })
       .success(function(data){
-
         if (data.error) {
           $scope.error = data.error;
         }else{
           $scope.acudientes = data;
         }
-
       })
       .error(function(){
         $scope.error = "Error: No hay Datos" ;
     });
-    /*End Data favoritos*/
+  };
+
+  $scope.initAlumnos = function() {
+    $http.post("servicios/readAlumnsForAcudient.php", {'guid': $scope.guid })
+      .success(function(data){
+        if (data.error) {
+          $scope.error = data.error;
+        }else{
+          $scope.alumnos = data;
+        }
+      })
+      .error(function(){
+        $scope.error = "Error: No hay Datos" ;
+    });
   };
 
   $scope.initAcademicAd = function() {
@@ -133,6 +145,7 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
     $scope.initAcademicAd();
     $scope.initLaboralAd();
     $scope.initInfoMedica();
+    $scope.initAlumnos();
 
     $scope.addFather = function(ev,p) {
        person.setPerson(p);
@@ -152,6 +165,24 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
        });
     };
 
+    $scope.addAlumno = function(ev,p) {
+       person.setPerson(p);
+       $mdDialog.show({
+         controller: 'chooseAlumnoCtrl',
+         templateUrl: 'views/choose_alumno.html',
+         parent: angular.element(document.body),
+         targetEvent: ev,
+         clickOutsideToClose:true
+       })
+       .then(function(answer) {
+         $scope.initPerson();
+         $scope.initAlumnos();
+       }, function() {
+         $scope.initPerson();
+         $scope.initAlumnos();
+       });
+    };
+
     $scope.deleteFather = function(guidFather) {
       $http.post('servicios/deleteFatherByStudent.php',{'guid_student': $scope.guid, 'guid_father': guidFather})
           .success(function(data) {
@@ -159,6 +190,17 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
               $scope.error = data.error;
             }else{
                $scope.initAcudientes();
+            }
+          });
+    };
+
+    $scope.deleteAlumno = function(guidAlumno) {
+      $http.post('servicios/deleteAlumnoByFather.php',{'guid_father': $scope.guid, 'guid_student': guidAlumno})
+          .success(function(data) {
+            if(data.error){
+              $scope.error = data.error;
+            }else{
+               $scope.initAlumnos();
             }
           });
     };

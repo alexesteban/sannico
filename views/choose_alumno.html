@@ -1,0 +1,28 @@
+<md-dialog class="a-modal">
+
+    <div class="a-modal__header">
+      <h1>Agrega un alumno</h1>
+      <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
+    </div>
+    <div class="a-modal__body">
+
+      <div class="row-fluid" class="list_scroll" >
+
+        <div class="col-sm-12" ng-repeat="alumno in alumnos">
+          <div class="a-list__alumn a-list__alumn--space " ng-click="chooseAlumno(alumno.guid)">
+              <div class="a-list__photo">
+                <i class="flaticon-boy-broad-smile"></i>
+              </div>
+              <div class="a-list__name">
+                {{alumno.nombres}}
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+</md-dialog>

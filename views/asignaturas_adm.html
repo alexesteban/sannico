@@ -1,0 +1,43 @@
+<div class="a-section">
+  <div class="a-title__internal">
+    Asignaturas - Cursos
+    <a class="a-btn__add" href ng-click="addCurso($event,'Docente')" >
+      <i class="flaticon-plus"></i>  AGREGAR
+    </a>
+  </div>
+</div>
+
+<div class="a-section">
+  <div class="a-card__flex-wrapper">
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex" ng-repeat="curso in cursos">
+      <div class="a-card-wrapper">
+        <div class="a-card-header">
+          <div class="a-card-header__title-photo">
+            <h1 class="light">{{curso.name}} °</h1>
+            <span>15 Asignaturas</span>
+          </div>
+          <md-menu>
+          <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+          <i class="flaticon-show-more-button-with-three-dots"></i>
+          </md-button>
+          <md-menu-content>
+            <md-menu-item>
+              <md-button ng-click="editCurso(curso.id)"><i class="flaticon-edit"></i>  Editar</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        </div>
+      </div>
+    </div>
+  <!-- END CARD -->
+
+
+
+  </div>
+  <div ng-if="cursos.length === 0">
+    <h2  class="a-txt-cent">No hay Cursos</h2>
+    <br>
+  </div>
+</div>

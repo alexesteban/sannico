@@ -34,6 +34,7 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
          $scope.mision = data.mision;
          $scope.vision = data.vision;
          $scope.servicios = data.servicios;
+         $scope.year = data.year;
        }
 
      })
@@ -60,6 +61,17 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
  };
 
  $scope.initContenido();
+
+ $scope.updYear = function(){
+   $http.post("servicios/updYear.php", {"year": $scope.year})
+     .success(function(data){
+       if (data.error) {
+         $scope.errorCont = data.error;
+       }else{
+         $scope.successYear = "Los Datos se actualizaron correctamente";
+       }
+     });
+ };
 
 
 
