@@ -5,7 +5,10 @@
   $data = json_decode(file_get_contents("php://input"));
   $guid = mysqli_real_escape_string($conn, $data->guid);
 
-	$result = $conn->query("SELECT * FROM users U LEFT JOIN students S ON U.guid = S.guid WHERE U.guid = '$guid'");
+	$result = $conn->query("SELECT * FROM users U
+                          LEFT JOIN students S ON U.guid = S.guid
+                          LEFT JOIN cursos C ON S.grado = C.id
+                          WHERE U.guid = '$guid'");
   $rs = $result->fetch_array(MYSQLI_ASSOC);
 
 	$miArray = array(
@@ -23,6 +26,7 @@
     	'documento' 		=> $rs["documento"],
     	'escivil' 		=> $rs["escivil"],
     	'direccion' 		=> $rs["direccion"],
+      'curso' 		=> $rs["name"],
     	'grado' 		=> $rs["grado"],
     	'codigo' 		=> $rs["codigo"],
   );

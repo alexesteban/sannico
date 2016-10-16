@@ -31,9 +31,9 @@
         <md-input-container class="md-block">
           <label>Filtrar por Grado</label>
           <md-select ng-model="grado.grado" >
-            <md-option value="6">6°</md-option>
-            <md-option value="7">7°</md-option>
-            <md-option value="8">8°</md-option>
+            <md-option ng-repeat="curso in cursos" value="{{curso.name}}">
+              {{curso.name}}°
+            </md-option>
             <md-option value="">Todos</md-option>
           </md-select>
         </md-input-container>

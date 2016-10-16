@@ -72,6 +72,18 @@
   .light {
     font-weight: 400;
   }
+  .curso {
+    font-weight: 400;
+    display: inline-block;
+    font-size: 36px;
+    padding-right: .5em;
+    border-right: 1px solid silver;
+  }
+  .curso--span {
+    font-size: 14px;
+    color: gray;
+    padding-left: 1em;
+  }
 }
 
 .a-card-header__pin-right {

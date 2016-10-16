@@ -9,14 +9,12 @@
         <i class="flaticon-book-2"></i>
       </div>
       <div class="a-tittle-info__wrapper">
-        <span>Algebra</span>
-        <span class="a-card__grade">8° Grado</span>
+        <span>{{asignatura}}</span>
+        <span class="a-card__grade">Curso {{curso}}°</span>
       </div>
     </div>
 
   </div>
-
-
 
   <div class="a-section">
     <div class="a-card">
@@ -25,10 +23,20 @@
       <div class="row">
         <div class="col-sm-6">
 
-          <md-input-container ng-if="state == 'Al'" class="md-block" flex-gt-sm>
-            <label>Buscar Alumno</label>
-            <input >
-          </md-input-container>
+          <div class="row" ng-show="state == 'Al'">
+            <div class="col-sm-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Buscar por Nombre</label>
+                <input  type="text" ng-model="search.nombres">
+              </md-input-container>
+            </div>
+            <div class="col-sm-6">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Buscar por Apellido</label>
+                <input  type="text" ng-model="search.apellidos">
+              </md-input-container>
+            </div>
+          </div>
 
           <md-input-container ng-if="state == 'Ac'" class="md-block">
             <label>Periodo Académico</label>
@@ -59,44 +67,14 @@
         <div role="tabpanel" class="tab-pane active" id="alumnos">
           <div class="row">
             <!-- Alumn -->
-            <div class="col-sm-6">
-              <a href="#/perfil_edit/1">
+            <div class="col-sm-6" ng-repeat="alumno in alumnos  |  filter:search  ">
+              <a href="#/perfil_edit/{{alumno.guid}}">
               <div class="a-list__alumn a-list__alumn--initial">
                   <div class="a-list__photo">
                     <i class="flaticon-boy-broad-smile"></i>
                   </div>
                   <div class="a-list__name">
-                    Camilo Andrés Castrillón Colmenares
-                  </div>
-              </div>
-              </a>
-            </div>
-            <!-- End Alumn -->
-
-            <!-- Alumn -->
-            <div class="col-sm-6">
-              <a href="#/perfil_edit/1">
-              <div class="a-list__alumn a-list__alumn--initial">
-                  <div class="a-list__photo">
-                    <i class="flaticon-boy-broad-smile"></i>
-                  </div>
-                  <div class="a-list__name">
-                    Camilo Andrés Castrillón Colmenares
-                  </div>
-              </div>
-              </a>
-            </div>
-            <!-- End Alumn -->
-
-            <!-- Alumn -->
-            <div class="col-sm-6">
-              <a href="#/perfil_edit/1">
-              <div class="a-list__alumn a-list__alumn--initial">
-                  <div class="a-list__photo">
-                    <i class="flaticon-boy-broad-smile"></i>
-                  </div>
-                  <div class="a-list__name">
-                    Camilo Andrés Castrillón Colmenares
+                    {{alumno.nombres}} {{alumno.apellidos}}
                   </div>
               </div>
               </a>
@@ -111,7 +89,7 @@
             <!-- Add Academic -->
             <div class="col-sm-4">
               <div class="a-subject a-subject--create">
-                <a href="javascript:void(0)" ng-click="edit($event,'ctarea')">
+                <a href="javascript:void(0)" ng-click="addTarea($event,idAsignatura)">
                   <i class="flaticon-plus"></i>
                   Crear una Tarea
                 </a>
@@ -120,7 +98,7 @@
             <!-- End Add Academic -->
 
             <!-- Alumns Academic -->
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-repeat="tarea in tareas">
               <div class="a-subject">
                 <md-menu>
                   <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
@@ -140,17 +118,18 @@
                 </md-menu>
                   <div class="a-subject__header">
                     <div class="a-subject__name">
-                      Trabajo en Clase
+                      {{tarea.titulo}}
                     </div>
                   </div>
                   <div class="a-subject__failure">
-                    <p>Entrega: 2016-03-11</p>
+                    <p>Entrega: {{tarea.entrega}}</p>
                     <p>
-                      <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publicado">publicada</md-switch>
+                      <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="tarea.publica">publicada</md-switch>
                     </p>
-                    <p class="a-state active"> Calificable </p>
+                    <p ng-if="tarea.calificable != 0" class="a-state active"> Calificable </p>
+                    <p ng-if="tarea.calificable == 0" class="a-state inactive"> No Calificable </p>
                   </div>
-                  <div class="a-subject__score">15%</div>
+                  <div ng-if="tarea.calificable != 0" class="a-subject__score">{{tarea.porcentaje}}%</div>
               </div>
             </div>
             <!-- End Alumns Academic -->

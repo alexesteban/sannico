@@ -1,0 +1,27 @@
+<md-dialog class="a-modal">
+  <form ng-submit="editCurso()">
+  <div class="a-modal__header">
+    <h1>Editar Curso </h1>
+    <a class="a-modal__close" href ng-click="cancel()"><i class="flaticon-close-circular-button-of-a-cross"></i></a>
+  </div>
+  <div class="a-modal__body">
+    <div class="row-fluid a-row-fix">
+      <div class="col-sm-12">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Grado, Ej: 6, 6-A ó 6-B</label>
+          <input type="text" ng-model="name">
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+  <div class="a-modal__footer">
+    <div ng-if="error" class="alert alert-danger" role="alert" timeout>{{error}}</div>
+    <button type="submit" class="a-button button--color-violet a-text--uppercase">
+      EDITAR
+    </button>
+    <button class="a-button button--color-silver" ng-click="cancel()">
+      CANCELAR
+    </button>
+  </div>
+  </form>
+</md-dialog>

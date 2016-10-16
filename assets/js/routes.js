@@ -57,7 +57,7 @@ function($routeProvider) {
     templateUrl: 'views/asignaturas.html',
     controller: 'asignaturasCtrl'
   }).
-  when('/adm_asignatura/:id', {
+  when('/adm_asignatura/:idAsignatura/:idCurso', {
     templateUrl: 'views/adm_asignatura.html',
     controller: 'admAsignaturaCtrl'
   }).
@@ -84,6 +84,10 @@ function($routeProvider) {
   when('/galeria_adm/:id', {
     templateUrl: 'views/galeria_adm.html',
     controller: 'galeriaAdmCtrl'
+  }).
+  when('/curso_adm/:idCurso', {
+    templateUrl: 'views/curso_adm.html',
+    controller: 'cursoAdmCtrl'
   }).
   when('/app_adm', {
     templateUrl: 'views/app_adm.html',

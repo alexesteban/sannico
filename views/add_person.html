@@ -44,8 +44,9 @@
           <md-input-container class="md-block">
             <label>Grado</label>
             <md-select ng-model="grado">
-              <md-option value="6">6°</md-option>
-              <md-option value="7">7°</md-option>
+              <md-option ng-repeat="curso in cursos" value="{{curso.id}}" >
+                {{curso.name}} º
+              </md-option>
             </md-select>
           </md-input-container>
         </div>

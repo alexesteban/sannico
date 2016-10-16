@@ -280,6 +280,16 @@ a:hover, a:focus {
     color: silver; }
   .a-card-header__title-photo .light {
     font-weight: 400; }
+  .a-card-header__title-photo .curso {
+    font-weight: 400;
+    display: inline-block;
+    font-size: 36px;
+    padding-right: .5em;
+    border-right: 1px solid silver; }
+  .a-card-header__title-photo .curso--span {
+    font-size: 14px;
+    color: gray;
+    padding-left: 1em; }
 
 .a-card-header__pin-right {
   position: absolute;
@@ -573,9 +583,10 @@ h3 {
 
 .a-list__photo,
 .a-list__level {
-  width: 40px;
+  max-width: 70px;
   height: 40px;
-  text-align: center; }
+  text-align: center;
+  padding: 0 .2em; }
 
 .a-list__photo i {
   font-size: 28px;

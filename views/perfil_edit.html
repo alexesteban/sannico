@@ -14,7 +14,7 @@
     </div>
     <div class="a-tittle-info__wrapper">
       <span>{{nombres}} {{apellidos}}</span>
-      <span class="a-card__grade" ng-if="rol == 3">{{grado}}° Grado</span>
+      <span class="a-card__grade" ng-if="rol == 3">Curso {{curso}}°</span>
     </div>
   </div>
   <div class="a-card__flex a-title-icon text-right">
@@ -130,10 +130,20 @@
                       <!--div class="col-sm-6">
                         <md-datepicker ng-model="user.submissionDate" md-placeholder="Nacimiento"></md-datepicker>
                       </div-->
-                      <div class="col-sm-12">
+                      <div ng-show="rol != 3" class="col-sm-12">
                         <md-input-container  class="md-block" flex-gt-xs>
                           <label>Estado Civil</label>
                           <input ng-model="escivil">
+                        </md-input-container>
+                      </div>
+                      <div ng-show="rol == 3" class="col-sm-12">
+                        <md-input-container class="md-block">
+                          <label>Curso</label>
+                          <md-select ng-model="grado">
+                            <md-option ng-repeat="curso in cursos" value="{{curso.id}}" >
+                              {{curso.name}} º
+                            </md-option>
+                          </md-select>
                         </md-input-container>
                       </div>
                     </div>
@@ -151,6 +161,7 @@
                 </div>
 
                   <div ng-if="errUser" class="alert alert-danger" role="alert" timeout>{{errUser}}</div>
+                  <div ng-if="successUpdDatosPersonales" class="alert alert-success" role="success" timeout>{{successUpdDatosPersonales}}</div>
 
                   <div class="a-button-form">
                     <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>

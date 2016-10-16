@@ -1,0 +1,57 @@
+<div class="a-section">
+  <div class="a-title__internal">
+    Asignaturas - {{nombreCurso}}º
+    <a class="a-btn__add" href ng-click="addAsignatura($event,idCurso)" >
+      <i class="flaticon-plus"></i>  AGREGAR
+    </a>
+  </div>
+</div>
+
+<div class="a-section">
+  <div class="a-card__flex-wrapper">
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex" ng-repeat="asignatura in asignaturas">
+      <div class="a-card-wrapper">
+        <div class="a-card-header">
+          <div class="a-card-header__title-photo">
+            <h1 class="light">{{asignatura.name}}</h1>
+          </div>
+          <md-menu>
+          <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+          <i class="flaticon-show-more-button-with-three-dots"></i>
+          </md-button>
+          <md-menu-content>
+            <md-menu-item>
+              <md-button ng-click="editAsignatura($event,asignatura.id)"><i class="flaticon-edit"></i>  Editar</md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="deleteAsignatura($event,asignatura.id)"><i class="flaticon-delete-button"></i>Eliminar</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        </div>
+      </div>
+      <div class="a-card-wrapper">
+        <div class="a-card-body a-card__flex-wrapper">
+          <div class="a-card__icon">
+                <i class="flaticon-notebook"></i>
+          </div>
+          <div class="a-card__list">
+            <ul>
+              <li>{{asignatura.nombres_docente}} {{asignatura.apellidos_docente}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- END CARD -->
+
+
+
+  </div>
+  <div ng-if="asignaturas.length === 0">
+    <h2  class="a-txt-cent">No hay Asignaturas</h2>
+    <br>
+  </div>
+</div>

@@ -26,9 +26,10 @@
 
 .a-list__photo,
 .a-list__level {
-  width:40px;
+  max-width: 70px;
   height: 40px;
   text-align: center;
+  padding: 0 .2em;
 }
 
 .a-list__photo {

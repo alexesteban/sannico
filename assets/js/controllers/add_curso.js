@@ -18,7 +18,6 @@ function ($scope,$mdDialog,$http) {
      }else{
        $scope.error = "El Campo es obligatorio";
      }
-
-   }
+   };
 
 }]);

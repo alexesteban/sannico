@@ -1,5 +1,5 @@
-app.controller('asignaturasAdmCtrl', ['$scope','$mdDialog','$mdMedia','$http',
-function ($scope,$mdDialog,$mdMedia,$http) {
+app.controller('asignaturasAdmCtrl', ['$scope','$mdDialog','$mdMedia','$http','person',
+function ($scope,$mdDialog,$mdMedia,$http,person) {
   var originatorEv;
    $scope.openMenu = function($mdOpenMenu, ev) {
      originatorEv = ev;
@@ -20,6 +20,22 @@ function ($scope,$mdDialog,$mdMedia,$http) {
       $scope.initCursos();
     });
   };
+
+  $scope.editCurso = function(ev,$idCurso) {
+  person.setPerson($idCurso);
+   $mdDialog.show({
+     controller: 'editCursoCtrl',
+     templateUrl: 'views/edit_curso.html',
+     parent: angular.element(document.body),
+     targetEvent: ev,
+     clickOutsideToClose:true
+   })
+   .then(function(answer) {
+     $scope.initCursos();
+   }, function() {
+     $scope.initCursos();
+   });
+ };
 
   $scope.initCursos = function() {
     $http.post("servicios/readCursos.php")

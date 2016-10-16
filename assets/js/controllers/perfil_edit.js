@@ -33,6 +33,7 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
           $scope.documento = data.documento;
           $scope.escivil = data.escivil;
           $scope.direccion = data.direccion;
+          $scope.curso = data.curso;
           $scope.grado = data.grado;
           $scope.codigo = data.codigo;
         }
@@ -147,6 +148,19 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
     $scope.initInfoMedica();
     $scope.initAlumnos();
 
+    $scope.readCursos = function(){
+      $http.post('servicios/readCursos.php')
+          .success(function(data) {
+            if(data.error){
+              $scope.error = data.error;
+            }else{
+              $scope.cursos = data;
+            }
+          });
+    };
+
+    $scope.readCursos();
+
     $scope.addFather = function(ev,p) {
        person.setPerson(p);
        $mdDialog.show({
@@ -206,6 +220,7 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
     };
 
     $scope.updateUser = function(){
+      $scope.successUpdDatosPersonales = "";
 
       $scope.telefono = (!$scope.telefono) ? "" : $scope.telefono;
       $scope.celular = (!$scope.celular) ?  "" :  $scope.celular;
@@ -213,12 +228,13 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
       $scope.direccion = (!$scope.direccion) ?  "" :  $scope.direccion;
 
       if($scope.nombres && $scope.documento && $scope.email && $scope.apellidos){
-        $http.post('servicios/updUser.php',{'guid': $scope.guid, 'nombres':$scope.nombres, 'documento': $scope.documento, 'telefono': $scope.telefono, 'celular': $scope.celular, 'email': $scope.email, 'apellidos': $scope.apellidos, 'escivil': $scope.escivil, 'direccion': $scope.direccion})
+        $http.post('servicios/updUser.php',{'guid': $scope.guid, 'nombres':$scope.nombres, 'documento': $scope.documento, 'telefono': $scope.telefono, 'celular': $scope.celular, 'email': $scope.email, 'apellidos': $scope.apellidos, 'escivil': $scope.escivil, 'direccion': $scope.direccion, 'grado': $scope.grado, 'rol': $scope.rol})
             .success(function(data) {
               if(data.error){
                 $scope.error = data.error;
               }else{
-                console.log("Se actualizaron los datos");
+                $scope.initPerson();
+                $scope.successUpdDatosPersonales = "Se actualizaron los datos correctamente";
               }
             });
       }else{

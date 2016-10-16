@@ -7,5 +7,6 @@ function ($scope,$mdDialog,person) {
 
  $scope.typeEdit = person.getPerson();
 
+ 
 
 }]);
