@@ -92,7 +92,7 @@
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Nombres</label>
-                      <input ng-model="nombres" required>
+                      <input ng-model="nombres" required ng-readonly="rolSession != 1">
                     </md-input-container>
 
                     <div class="row">
@@ -109,7 +109,7 @@
                       <div class="col-sm-12">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Documento</label>
-                          <input ng-model="documento" required>
+                          <input ng-model="documento" required ng-readonly="rolSession != 1">
                         </md-input-container>
                       </div>
                     </div>
@@ -118,27 +118,27 @@
                       <div class="col-sm-6">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Teléfono Domicilio</label>
-                          <input ng-model="telefono">
+                          <input ng-model="telefono" ng-readonly="rolSession != 1">
                         </md-input-container>
                       </div>
                       <div class="col-sm-6">
                         <md-input-container class="md-block" flex-gt-sm>
                           <label>Celular</label>
-                          <input ng-model="celular">
+                          <input ng-model="celular" ng-readonly="rolSession != 1">
                         </md-input-container>
                       </div>
                     </div>
 
                     <md-input-container  class="md-block" flex-gt-xs>
                       <label>Email</label>
-                      <input ng-model="email" required>
+                      <input ng-model="email" required ng-readonly="rolSession != 1">
                     </md-input-container>
 
                   </div>
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Apellidos</label>
-                      <input ng-model="apellidos" required>
+                      <input ng-model="apellidos" required ng-readonly="rolSession != 1">
                     </md-input-container>
 
                     <div class="row" layout-gt-xs="row">
@@ -148,13 +148,14 @@
                       <div ng-show="rol != 3" class="col-sm-12">
                         <md-input-container  class="md-block" flex-gt-xs>
                           <label>Estado Civil</label>
-                          <input ng-model="escivil">
+                          <input ng-model="escivil" ng-readonly="rolSession != 1">
                         </md-input-container>
                       </div>
                       <div ng-show="rol == 3" class="col-sm-12">
                         <md-input-container class="md-block">
                           <label>Curso</label>
-                          <md-select ng-model="grado">
+                          <p ng-if="rolSession != 1">{{curso}}°</p>
+                          <md-select ng-model="grado" ng-show="rolSession == 1">
                             <md-option ng-repeat="curso in cursos" value="{{curso.id}}" >
                               {{curso.name}} º
                             </md-option>
@@ -165,12 +166,12 @@
 
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Dirección Domicilio</label>
-                      <input ng-model="direccion">
+                      <input ng-model="direccion" ng-readonly="rolSession != 1">
                     </md-input-container>
 
-                    <md-button class="a-perfil__reset-password">
+                    <!--md-button class="a-perfil__reset-password">
                       Reestablecer Contraseña
-                    </md-button>
+                    </md-button-->
 
                   </div>
                 </div>
@@ -178,7 +179,7 @@
                   <div ng-if="errUser" class="alert alert-danger" role="alert" timeout>{{errUser}}</div>
                   <div ng-if="successUpdDatosPersonales" class="alert alert-success" role="success" timeout>{{successUpdDatosPersonales}}</div>
 
-                  <div class="a-button-form">
+                  <div ng-if="rolSession == 1" class="a-button-form">
                     <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
                   </div>
                 </form>
@@ -200,14 +201,14 @@
                           </div>
                       </div>
                       </a>
-                      <div style="position:absolute; right:1em; top:1em" ng-click="deleteFather(acudiente.guid)">
+                      <div  ng-if="rolSession == 1" style="position:absolute; right:1em; top:1em" ng-click="deleteFather(acudiente.guid)">
                         <i style="color:red" class="flaticon-close-circular-button-of-a-cross"></i>
                       </div>
                     </div>
                     <!-- End Acudiente -->
                 </div>
 
-                <div class="a-button-form">
+                <div ng-if="rolSession == 1" class="a-button-form">
                   <a href="javascript:void(0)" class="a-button button--color-violet a-text--uppercase" ng-click="addFather($event,guid)">
                     <i class="flaticon-plus"></i> AGREGAR
                   </a>
@@ -230,14 +231,14 @@
                           </div>
                       </div>
                       </a>
-                      <div style="position:absolute; right:1em; top:1em" ng-click="deleteAlumno(alumno.guid)">
+                      <div ng-if="rolSession == 1" style="position:absolute; right:1em; top:1em" ng-click="deleteAlumno(alumno.guid)">
                         <i style="color:red" class="flaticon-close-circular-button-of-a-cross"></i>
                       </div>
                     </div>
                     <!-- End Alumno -->
                 </div>
 
-                <div class="a-button-form">
+                <div ng-if="rolSession == 1" class="a-button-form">
                   <a href="javascript:void(0)" class="a-button button--color-violet a-text--uppercase" ng-click="addAlumno($event,guid)">
                     <i class="flaticon-plus"></i> AGREGAR
                   </a>
@@ -258,19 +259,19 @@
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Nivel Académico</label>
-                      <input ng-model="nivel_academico">
+                      <input ng-model="nivel_academico" ng-readonly="rolSession != 1">
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Programa Académico</label>
-                      <input ng-model="programa_academico">
+                      <input ng-model="programa_academico" ng-readonly="rolSession != 1">
                     </md-input-container>
                   </div>
                   <div class="col-sm-6">
 
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Institución</label>
-                      <input ng-model="institucion">
+                      <input ng-model="institucion" ng-readonly="rolSession != 1">
                     </md-input-container>
 
                     <md-datepicker ng-model="fecha_grado" md-placeholder="Fecha de Grado"></md-datepicker>
@@ -280,10 +281,10 @@
 
                 <md-input-container class="md-block" flex-gt-sm>
                   <label>Titulo Obtenido</label>
-                  <input ng-model="titulo">
+                  <input ng-model="titulo" ng-readonly="rolSession != 1">
                 </md-input-container>
 
-                <div class="a-button-form">
+                <div ng-if="rolSession == 1" class="a-button-form">
                   <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
                 </div>
 
@@ -369,7 +370,7 @@
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Nombre de la Compañía</label>
-                      <input ng-model="nombre_empresa">
+                      <input ng-model="nombre_empresa"  ng-readonly="rolSession != 1">
                     </md-input-container>
 
                     <div class="row">
@@ -385,12 +386,12 @@
                   <div class="col-sm-6">
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Cargo Desempeñado</label>
-                      <input ng-model="cargo">
+                      <input ng-model="cargo"  ng-readonly="rolSession != 1">
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
                       <label>Función del Cargo</label>
-                      <input ng-model="funcion">
+                      <input ng-model="funcion"  ng-readonly="rolSession != 1">
                     </md-input-container>
 
                   </div>
@@ -400,7 +401,7 @@
               </div>
               <!-- End Professional Tittle -->
 
-              <div class="a-button-form">
+              <div ng-if="rolSession == 1" class="a-button-form">
                 <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
               </div>
 
@@ -425,46 +426,46 @@
                     <div class="col-sm-4">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Altura (mts)</label>
-                        <input ng-model="altura">
+                        <input ng-model="altura"  ng-readonly="rolSession != 1">
                       </md-input-container>
                     </div>
                     <div class="col-sm-4">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Peso (kgs)</label>
-                        <input ng-model="peso">
+                        <input ng-model="peso"  ng-readonly="rolSession != 1">
                       </md-input-container>
                     </div>
                     <div class="col-sm-4">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>RH</label>
-                        <input ng-model="rh">
+                        <input ng-model="rh"  ng-readonly="rolSession != 1">
                       </md-input-container>
                     </div>
                   </div>
 
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Clínica Preferída</label>
-                    <input ng-model="clinica">
+                    <input ng-model="clinica"  ng-readonly="rolSession != 1">
                   </md-input-container>
 
                 </div>
                 <div class="col-sm-6">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Entidad Promotora de Salud (EPS)</label>
-                    <input ng-model="eps">
+                    <input ng-model="eps"  ng-readonly="rolSession != 1">
                   </md-input-container>
 
                   <div class="row">
                     <div class="col-sm-6">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Médico Particular</label>
-                        <input ng-model="medico">
+                        <input ng-model="medico"  ng-readonly="rolSession != 1">
                       </md-input-container>
                     </div>
                     <div class="col-sm-6">
                       <md-input-container class="md-block" flex-gt-sm>
                         <label>Teléfono del Médico</label>
-                        <input ng-model="telefono_medico">
+                        <input ng-model="telefono_medico"  ng-readonly="rolSession != 1">
                       </md-input-container>
                     </div>
                   </div>
@@ -474,7 +475,7 @@
 
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Observaciones</label>
-                <input ng-model="observaciones">
+                <input ng-model="observaciones"  ng-readonly="rolSession != 1">
               </md-input-container>
 
               <br>
@@ -485,18 +486,18 @@
                 <div class="col-sm-6">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Nombre Contácto</label>
-                    <input ng-model="nombre_contacto">
+                    <input ng-model="nombre_contacto"  ng-readonly="rolSession != 1">
                   </md-input-container>
                 </div>
                 <div class="col-sm-6">
                   <md-input-container class="md-block" flex-gt-sm>
                     <label>Teléfono</label>
-                    <input ng-model="telefono_contacto">
+                    <input ng-model="telefono_contacto"  ng-readonly="rolSession != 1">
                   </md-input-container>
                 </div>
               </div>
 
-              <div class="a-button-form">
+              <div ng-if="rolSession == 1" class="a-button-form">
                 <button class="a-button button--color-violet a-text--uppercase" type="submit"> GUARDAR </button>
               </div>
 
