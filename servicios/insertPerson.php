@@ -92,7 +92,7 @@
 					 $mail = new PHPMailer(FALSE); // the true param means it will throw exceptions on errors, which we need to catch
 
 				        $nmEmisor = 'San Nicolás';
-				        $emEmisor = "sannicolas@gmail.com";
+				        $emEmisor = "alexesteban89@gmail.com";
 				        $mail->AddReplyTo($emEmisor, $nmEmisor);
 				        $mail->SetFrom($emEmisor, $nmEmisor);
 				        $mail->CharSet = "iso-8859-1";
