@@ -44,10 +44,12 @@
 
   <div ng-if="loggedIn && loggedIn != '' " class="a-dropdown dropdown">
     <a class="av-avatar dropdown-toggle" href=""  id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <img ng-if="avatar == ''" src="assets/img/avatar/default.png" alt="">
-      <img ng-if="avatar != ''" ng-src="{{avatar}}" />
+      <img ng-if="!avatar" src="assets/img/avatar/default.png" alt="">
+      <img ng-if="avatar" ng-src="{{avatar}}" />
     </a>
     <ul class="dropdown-menu " aria-labelledby="perfil">
+      <li><a href="#/dashboard/{{loggedIn}}" >Mi Dashboard</a></li>
+      <li><a href="#/perfil_edit/{{loggedIn}}" >Mi Perfil</a></li>
       <li><a href="" ng-click="logout()" >Salir</a></li>
     </ul>
   </div>

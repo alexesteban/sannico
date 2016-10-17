@@ -6,7 +6,7 @@
   $guid_student = mysqli_real_escape_string($conn, $data->guid_student);
   $guid_father = mysqli_real_escape_string($conn, $data->guid_father);
 
-	$query = "INSERT INTO alumns_by_father (guid_student,guid_father)	VALUES ('$guid_student','$guid_father')";
+	$query = "INSERT INTO fathers_by_student (guid_student,guid_father)	VALUES ('$guid_student','$guid_father')";
   $result = $conn->query($query);
 
 	$conn->close();

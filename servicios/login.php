@@ -6,11 +6,26 @@ $email = mysqli_real_escape_string($conn, $data->email);
 	$result = $conn->query("SELECT * FROM users WHERE email = '$email'");
 	$num_rows = mysqli_num_rows($result);
 
-	$conn->close();
+	$resultCode = $conn->query("SELECT * FROM students WHERE codigo = '$email'");
+	$num_rowsCode = mysqli_num_rows($resultCode);
 
-	if ($num_rows != 1) {
+
+
+	if ($num_rows != 1 && $num_rowsCode != 1) {
 		$arr = array('error' => "El email no existe");
 	}else{
+
+		if ($num_rowsCode == 1 && $num_rows != 1 ) {
+
+			//GET TAREA DATA
+			$guidResult = $conn->query("SELECT guid FROM students WHERE codigo = $email");
+			while ($row = $guidResult->fetch_array(MYSQLI_ASSOC)) {
+					$guidStudent = $row["guid"];
+			}
+
+			$result = $conn->query("SELECT * FROM users WHERE guid = '$guidStudent'");
+
+		}
 
 		$rs = $result->fetch_array(MYSQLI_ASSOC);
 		$passDB = $rs["password"];
@@ -31,7 +46,7 @@ $email = mysqli_real_escape_string($conn, $data->email);
 			$arr = array('error' => "El password es incorrecto");
 		}
 
-}
+}$conn->close();
 	$salida = json_encode($arr);
 	print_r($salida);
 

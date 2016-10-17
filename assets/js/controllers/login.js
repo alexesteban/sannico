@@ -16,7 +16,7 @@ function ($scope,$location,$http,$cookies) {
                 var rol = data.rol;
                 $cookies.put('logued', guid);
                 $scope.callAvatar();
-                $scope.logued();
+                $scope.logued(rol);
               }
 
             }).error(function(data, status) {

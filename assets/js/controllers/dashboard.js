@@ -41,6 +41,38 @@ function ($scope,$http,$routeParams,$cookies) {
 
     $scope.initCounts();
 
+    $scope.students = function() {
+      if(id) {
+        $http.post("servicios/readAlumnsForAcudient.php",{"guid": id})
+          .success(function(data){
+            if (data.error) {
+              $scope.error = data.error;
+            }else{
+              $scope.alumnos = data;
+
+              $scope.edad = function(Fecha){
+                fecha = new Date(Fecha);
+                hoy = new Date();
+                ed = parseInt((hoy -fecha)/365/24/60/60/1000);
+                return ed;
+              };
+
+              for (var i = 0; i < data.length; i++) {
+                var alumnos = $scope.alumnos[i];
+                var respuesta = data[i];
+                alumnos.nacimiento = $scope.edad(respuesta.nacimiento);
+              }
+
+            }
+          })
+          .error(function(){
+            $scope.error = "Error: No hay Datos" ;
+        });
+      }else{
+        $scope.logout();
+      }
+    };
+
 
 
 }]);

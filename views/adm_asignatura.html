@@ -12,6 +12,9 @@
         <span>{{asignatura}}</span>
         <span class="a-card__grade">Curso {{curso}}°</span>
       </div>
+      <div class="a-card__flex a-title-icon text-right">
+        <a class="a-button button--color-violet a-text--uppercase" href="#/calificar-promedio/{{idAsignatura}}"> PROMEDIOS </a>
+      </div>
     </div>
 
   </div>
@@ -38,14 +41,14 @@
             </div>
           </div>
 
-          <md-input-container ng-if="state == 'Ac'" class="md-block">
+          <!--md-input-container ng-if="state == 'Ac'" class="md-block">
             <label>Periodo Académico</label>
             <md-select ng-model="myModel" required>
               <md-option value="1">Periodo 1</md-option>
               <md-option value="2">Periodo 2</md-option>
               <md-option value="3">Periodo 3</md-option>
             </md-select>
-          </md-input-container>
+          </md-input-container-->
 
         </div>
         <div class="col-sm-6">
@@ -71,7 +74,9 @@
               <a href="#/perfil_edit/{{alumno.guid}}">
               <div class="a-list__alumn a-list__alumn--initial">
                   <div class="a-list__photo">
-                    <i class="flaticon-boy-broad-smile"></i>
+                    <i ng-if="alumno.genero == 'M' && !alumno.avatar " class="flaticon-boy-broad-smile"></i>
+                    <i ng-if="alumno.genero == 'F' && !alumno.avatar " class="flaticon-smiling-girl"></i>
+                    <img style="width: 36px; border-radius: 50%; margin: 2px;"  ng-if="alumno.avatar" ng-src="{{alumno.avatar}}" />
                   </div>
                   <div class="a-list__name">
                     {{alumno.nombres}} {{alumno.apellidos}}
@@ -105,14 +110,14 @@
                   <i class="flaticon-show-more-button-with-three-dots"></i>
                   </md-button>
                   <md-menu-content>
-                    <md-menu-item>
-                        <md-button href="#/calificar/1"><i class="flaticon-pen"></i>  Calificar</md-button>
+                    <md-menu-item ng-if="tarea.calificable != 0">
+                        <md-button href="#/calificar-tarea/{{tarea.id}}"><i class="flaticon-pen"></i>  Calificar</md-button>
                     </md-menu-item>
                     <md-menu-item>
-                        <md-button ng-click="edit($event,'etarea')"><i class="flaticon-edit"></i>  Editar</md-button>
+                        <md-button ng-click="editTarea($event,tarea.id)"><i class="flaticon-edit"></i>  Editar</md-button>
                     </md-menu-item>
                     <md-menu-item>
-                      <md-button ng-click="delete()"><i class="flaticon-delete-button"></i> Eliminar</md-button>
+                      <md-button ng-click="deleteTarea($event,tarea.id)"><i class="flaticon-delete-button"></i> Eliminar</md-button>
                     </md-menu-item>
                   </md-menu-content>
                 </md-menu>
@@ -124,12 +129,12 @@
                   <div class="a-subject__failure">
                     <p>Entrega: {{tarea.entrega}}</p>
                     <p>
-                      <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="tarea.publica">publicada</md-switch>
+                      <md-switch class="md-primary" ng-change="updPublica(tarea.id,tarea.publica)" md-no-ink aria-label="publicada" ng-model="tarea.publica">publicada</md-switch>
                     </p>
                     <p ng-if="tarea.calificable != 0" class="a-state active"> Calificable </p>
                     <p ng-if="tarea.calificable == 0" class="a-state inactive"> No Calificable </p>
                   </div>
-                  <div ng-if="tarea.calificable != 0" class="a-subject__score">{{tarea.porcentaje}}%</div>
+                  <!--div ng-if="tarea.calificable != 0" class="a-subject__score">{{tarea.porcentaje}}%</div-->
               </div>
             </div>
             <!-- End Alumns Academic -->
@@ -144,7 +149,7 @@
             <!-- Add Academic -->
             <div class="col-sm-4">
               <div class="a-subject a-subject--create">
-                <a href="javascript:void(0)" ng-click="edit($event,'ceval')">
+                <a href="javascript:void(0)" ng-click="addEvaluacion($event,idAsignatura)">
                   <i class="flaticon-plus"></i>
                   Crear una Evaluación
                 </a>
@@ -153,7 +158,7 @@
             <!-- End Add Academic -->
 
             <!-- Alumns Academic -->
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-repeat="evaluacion in evaluaciones">
               <div class="a-subject">
                 <md-menu>
                   <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
@@ -161,29 +166,29 @@
                   </md-button>
                   <md-menu-content>
                     <md-menu-item>
-                        <md-button href="#/"><i class="flaticon-pen"></i>  Calificar</md-button>
+                        <md-button href="#/calificar-evaluacion/{{evaluacion.id}}"><i class="flaticon-pen"></i>  Calificar</md-button>
                     </md-menu-item>
                     <md-menu-item>
-                        <md-button ng-click="edit($event,'eeval')"><i class="flaticon-edit"></i>  Editar</md-button>
+                        <md-button ng-click="editEvaluacion($event,evaluacion.id)"><i class="flaticon-edit"></i>  Editar</md-button>
                     </md-menu-item>
                     <md-menu-item>
-                      <md-button ng-click="delete()"><i class="flaticon-delete-button"></i> Eliminar</md-button>
+                      <md-button ng-click="deleteEvaluacion($event,evaluacion.id)"><i class="flaticon-delete-button"></i> Eliminar</md-button>
                     </md-menu-item>
                   </md-menu-content>
                 </md-menu>
                   <div class="a-subject__header">
                     <div class="a-subject__name">
-                      Trabajo en Clase
+                      {{evaluacion.titulo}}
                     </div>
                   </div>
                   <div class="a-subject__failure">
-                    <p>Entrega: 2016-03-11</p>
+                    <p>Entrega: {{evaluacion.entrega}}</p>
                     <p>
-                      <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publicado">publicada</md-switch>
+                      <md-switch class="md-primary" ng-change="updEvPublica(evaluacion.id,evaluacion.publica)" md-no-ink aria-label="publicada" ng-model="evaluacion.publica">publicada</md-switch>
                     </p>
                     <br>
                   </div>
-                  <div class="a-subject__score">15%</div>
+                  <!--div class="a-subject__score">15%</div-->
               </div>
             </div>
             <!-- End Alumns Academic -->

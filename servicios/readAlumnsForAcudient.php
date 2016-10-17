@@ -6,7 +6,7 @@
 	$guid = mysqli_real_escape_string($conn, $data->guid);
 
 	$result = $conn->query("SELECT * FROM USERS U
-  INNER JOIN alumns_by_father AF ON U.guid = AF.guid_student
+  INNER JOIN fathers_by_student AF ON U.guid = AF.guid_student
   WHERE AF.guid_father = '$guid'");
 
 	$miArray = array();

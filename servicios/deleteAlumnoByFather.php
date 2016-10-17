@@ -7,7 +7,7 @@
   $guid_student = mysqli_real_escape_string($conn, $data->guid_student);
   $guid_father = mysqli_real_escape_string($conn, $data->guid_father);
 
-  $delete = $conn->query("DELETE FROM alumns_by_father WHERE guid_student = '$guid_student' AND guid_father = '$guid_father'");
+  $delete = $conn->query("DELETE FROM fathers_by_student WHERE guid_student = '$guid_student' AND guid_father = '$guid_father'");
 
   $result = $delete;
 

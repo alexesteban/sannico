@@ -25,6 +25,54 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
    });
  };
 
+  $scope.addEvaluacion = function(ev,idAsignatura) {
+  person.setPerson(idAsignatura);
+   $mdDialog.show({
+     controller: 'addEvaluacionCtrl',
+     templateUrl: 'views/add_evaluacion.html',
+     parent: angular.element(document.body),
+     targetEvent: ev,
+     clickOutsideToClose:true
+   })
+   .then(function(answer) {
+     $scope.initEvaluaciones();
+   }, function() {
+     $scope.initEvaluaciones();
+   });
+ };
+
+ $scope.editTarea = function(ev,idTarea) {
+ person.setPerson(idTarea);
+  $mdDialog.show({
+    controller: 'editTareaCtrl',
+    templateUrl: 'views/edit_tarea.html',
+    parent: angular.element(document.body),
+    targetEvent: ev,
+    clickOutsideToClose:true
+  })
+  .then(function(answer) {
+    $scope.initTareas();
+  }, function() {
+    $scope.initTareas();
+  });
+};
+
+ $scope.editEvaluacion = function(ev,idEvaluacion) {
+ person.setPerson(idEvaluacion);
+  $mdDialog.show({
+    controller: 'editEvaluacionCtrl',
+    templateUrl: 'views/edit_evaluacion.html',
+    parent: angular.element(document.body),
+    targetEvent: ev,
+    clickOutsideToClose:true
+  })
+  .then(function(answer) {
+    $scope.initEvaluaciones();
+  }, function() {
+    $scope.initEvaluaciones();
+  });
+};
+
  $scope.state = "Al";
 
   $scope.setState = function($state){
@@ -83,7 +131,28 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
             }
           }
 
+        }
+      });
+  };
 
+  $scope.initEvaluaciones = function() {
+    $http.post("servicios/readEvaluaciones.php", {'id': $scope.idAsignatura})
+      .success(function(data){
+        if (data.error) {
+          $scope.error = data.error;
+        }else{
+
+          $scope.evaluaciones = data;
+
+          for (var i = 0; i < data.length; i++) {
+            var evaluaciones = $scope.evaluaciones[i];
+            var evaluacion = data[i];
+            if (evaluacion.publica === "1") {
+              evaluaciones.publica = true;
+            }else{
+              evaluaciones.publica = false;
+            }
+          }
 
         }
       });
@@ -93,5 +162,64 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
   $scope.readCurso();
   $scope.readAsignatura();
   $scope.initTareas();
+  $scope.initEvaluaciones();
+
+  $scope.updPublica = function(idTarea,state){
+    if (state === true) {state = 1;}else{state = 0;}
+    $http.post("servicios/updTareaPublica.php", {'idTarea': idTarea, 'state': state})
+      .success(function(data){});
+  };
+
+  $scope.updEvPublica = function(idEvaluacion,state){
+    if (state === true) {state = 1;}else{state = 0;}
+    $http.post("servicios/updEvaluacionPublica.php", {'idEvaluacion': idEvaluacion, 'state': state})
+      .success(function(data){});
+  };
+
+  $scope.deleteTarea = function(ev,idTarea) {
+    // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Quieres Eliminar esta Tarea?')
+            .textContent('Si la eliminas, se perderá los datos de calificaciones asociados a esta tarea')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('ELIMINAR')
+            .cancel('CANCELAR');
+      $mdDialog.show(confirm).then(function() {
+
+        $http.post("servicios/deleteTarea.php", {'id': idTarea})
+          .success(function(respuesta){
+
+            $scope.initTareas();
+
+          });
+
+      }, function() {
+
+      });
+  };
+
+  $scope.deleteEvaluacion = function(ev,idEvaluacion) {
+    // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+            .title('Quieres Eliminar esta Evaluacion?')
+            .textContent('Si la eliminas, se perderá los datos de calificaciones asociados a esta evaluacion')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('ELIMINAR')
+            .cancel('CANCELAR');
+      $mdDialog.show(confirm).then(function() {
+
+        $http.post("servicios/deleteEvaluacion.php", {'id': idEvaluacion})
+          .success(function(respuesta){
+
+            $scope.initEvaluaciones();
+
+          });
+
+      }, function() {
+
+      });
+  };
 
 }]);

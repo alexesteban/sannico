@@ -1,6 +1,6 @@
 <div class="a-section">
   <div class="a-title__internal">
-    DOCENTES
+    DOCENTES {{rol}}
     <a class="a-btn__add" href ng-click="addTeacher($event,'Docente')" >
       <i class="flaticon-plus"></i>  AGREGAR
     </a>
@@ -35,14 +35,14 @@
       <div class="a-card-wrapper">
         <div class="a-card-body a-card__flex-wrapper">
           <div class="a-card__icon">
-                <i ng-if="docente.genero === 'F'" class="flaticon-educator-1"></i>
-                <i ng-if="docente.genero === 'M'" class="flaticon-educator"></i>
-              <p class="a-state active"> Activo </p>
+                <i ng-if="docente.genero === 'F' && !docente.avatar" class="flaticon-educator-1"></i>
+                <i ng-if="docente.genero === 'M' && !docente.avatar" class="flaticon-educator"></i>
+                <img style="width: 90px; border-radius: 50%;"  ng-if="docente.avatar" ng-src="{{docente.avatar}}" />
           </div>
           <div class="a-card__list">
             <ul>
               <li>{{docente.edad}} Años</li>
-              <li>4 Asignaturas</li>
+              <!--li>4 Asignaturas</li-->
             </ul>
           </div>
         </div>

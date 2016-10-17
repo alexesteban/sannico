@@ -467,7 +467,8 @@ h3 {
   height: 150px;
   border: 1px dashed #acacac;
   position: relative;
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
   .a-perfil__photo > i {
     font-size: 100px;
     color: #828282; }
@@ -480,7 +481,11 @@ h3 {
     font-size: 26px;
     width: 40px;
     height: 40px;
-    text-align: center; }
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden; }
+    .a-perfil__photo .a-perfil__photo-edit-icon:hover {
+      background: #1B95C4; }
 
 .a-peril__title-info {
   text-align: center;
@@ -501,13 +506,13 @@ h3 {
   height: 32px;
   right: 10px;
   top: 48px; }
-  .a-dropdown a {
+  .a-dropdown .av-avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     overflow: hidden;
     display: block; }
-    .a-dropdown a img {
+    .a-dropdown .av-avatar img {
       width: 100%; }
 
 .dropdown-menu {
@@ -516,6 +521,13 @@ h3 {
 
 .dropdown-menu > li > a {
   width: 100%; }
+
+#fileInput {
+  width: 100%;
+  position: absolute;
+  z-index: 9;
+  cursor: pointer;
+  opacity: 0; }
 
 .a-modal {
   min-width: 450px;
@@ -636,6 +648,8 @@ h3 {
   color: #919191; }
   .a-subject__failure p {
     margin: 0; }
+  .a-subject__failure .note--margin {
+    margin-right: 3.5em; }
 
 .a-subject__score {
   position: absolute;

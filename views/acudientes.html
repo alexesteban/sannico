@@ -38,7 +38,8 @@
         <a href="#/perfil_edit/{{acudiente.guid}}">
         <div class="a-list__alumn">
             <div class="a-list__photo">
-              <i class="flaticon-command"></i>
+              <i class="flaticon-command" ng-if="!acudiente.avatar"></i>
+              <img style="width: 36px; border-radius: 50%; margin: 2px;"  ng-if="acudiente.avatar" ng-src="{{acudiente.avatar}}" />
             </div>
             <div class="a-list__name">
               {{acudiente.nombres}} {{acudiente.apellidos}}

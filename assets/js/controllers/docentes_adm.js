@@ -1,5 +1,8 @@
-app.controller('docentesAdmCtrl', ['$scope','$mdDialog','$mdMedia','person','$http',
-function ($scope,$mdDialog,$mdMedia,person,$http) {
+app.controller('docentesAdmCtrl', ['$scope','$mdDialog','$mdMedia','person','$http','$cookies',
+function ($scope,$mdDialog,$mdMedia,person,$http,$cookies) {
+
+  var log = $cookies.get('logued');
+  if (!log) {$scope.logout();}
 
   var originatorEv;
    $scope.openMenu = function($mdOpenMenu, ev) {

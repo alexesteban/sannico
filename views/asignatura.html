@@ -6,19 +6,20 @@
   <div class="a-card__flex-wrapper">
     <div class="a-card__flex a-title-icon">
       <div class="a-tittle-icon__wrapper">
-        <i class="flaticon-educator-1"></i>
+        <i  ng-if="generoAlumno == 'M'" class="flaticon-boy-broad-smile"></i>
+        <i  ng-if="generoAlumno == 'F'" class="flaticon-smiling-girl"></i>
       </div>
       <div class="a-tittle-info__wrapper">
-        <span>Martha Cecilia Romero Castro</span>
-        <span class="a-card__grade">8° Grado</span>
+        <span>{{nombresAlumno}}</span>
+        <span class="a-card__grade">curso {{cursoAlumno}}°</span>
       </div>
       <div class="a-tittle-info__perfil">
-        <a href="#/perfil_edit/1">Ver Pefil</a>
+        <a href="#/perfil_edit/{{guidAlumno}}">Ver Pefil</a>
       </div>
     </div>
     <div class="a-card__flex a-title-icon text-right">
       <i class="flaticon-book-2"></i>
-      <span>Algebra</span>
+      <span>{{nombreAsignatura}}</span>
     </div>
   </div>
 
@@ -28,14 +29,14 @@
 
         <div class="row">
           <div class="col-sm-6">
-            <md-input-container class="md-block">
+            <!--md-input-container class="md-block">
               <label>Periodo Académico</label>
               <md-select ng-model="myModel" required>
                 <md-option value="1">Periodo 1</md-option>
                 <md-option value="2">Periodo 2</md-option>
                 <md-option value="3">Periodo 3</md-option>
               </md-select>
-            </md-input-container>
+            </md-input-container-->
           </div>
           <div class="col-sm-6">
 
@@ -43,7 +44,7 @@
               <ul tabs class="nav nav-pills nav-justified" role="tablist">
                 <li class="active"><a href="#tareas" role="tab" data-toggle="tab">TAREAS</a></li>
                 <li><a href="#evaluaciones" role="tab" data-toggle="tab">EVALUACIONES</a></li>
-                <li><a href="#fallas" role="tab" data-toggle="tab">FALLAS</a></li>
+                <!--li><a href="#fallas" role="tab" data-toggle="tab">FALLAS</a></li-->
               </ul>
               <!-- END TABS -->
 
@@ -58,10 +59,10 @@
 
           <div class="row">
             <!-- Alumns Academic -->
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-repeat="tarea in tareas">
               <div class="a-subject">
 
-                <md-menu>
+                <!--md-menu>
                   <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
                   <i class="flaticon-show-more-button-with-three-dots"></i>
                   </md-button>
@@ -70,18 +71,19 @@
                         <md-button ng-click="edit($event,'nota')"><i class="flaticon-edit"></i>  Editar</md-button>
                     </md-menu-item>
                   </md-menu-content>
-                </md-menu>
+                </md-menu-->
 
                   <div class="a-subject__header">
                     <div class="a-subject__name">
-                      Trabajo en Clase
+                      {{tarea.titulo}}
                     </div>
                   </div>
                   <div class="a-subject__failure">
-                    <p>Entrega: 2016-03-11</p>
-                    <p>Observación: xxxxxx</p>
+                    <p ng-class="{'note--margin' : tarea.nota}" ><strong>Entrega:</strong> {{tarea.entrega}}</p>
+                    <p ng-class="{'note--margin' : tarea.nota}" ng-if="tarea.descripcion"><strong>Descripción:</strong> {{tarea.descripcion}}</p>
+                    <p ng-class="{'note--margin' : tarea.nota}" ng-if="tarea.observaciones"><strong>Observaciones Nota:</strong> {{tarea.observaciones}}</p>
                   </div>
-                  <div class="a-subject__score">8.5</div>
+                  <div ng-if="tarea.nota" class="a-subject__score">{{tarea.nota}}</div>
 
               </div>
             </div>
@@ -94,10 +96,10 @@
 
           <div class="row">
             <!-- Alumns Academic -->
-            <div class="col-sm-4">
+            <div class="col-sm-4" ng-repeat="evaluacion in evaluaciones" >
               <div class="a-subject">
 
-                <md-menu>
+                <!--md-menu>
                   <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
                   <i class="flaticon-show-more-button-with-three-dots"></i>
                   </md-button>
@@ -106,18 +108,19 @@
                         <md-button ng-click="edit($event,'nota')"><i class="flaticon-edit"></i>  Editar</md-button>
                     </md-menu-item>
                   </md-menu-content>
-                </md-menu>
+                </md-menu-->
 
                   <div class="a-subject__header">
                     <div class="a-subject__name">
-                      Parcial Final
+                      {{evaluacion.titulo}}
                     </div>
                   </div>
                   <div class="a-subject__failure">
-                    <p>Presentación: 2016-03-11</p>
-                    <p>Observación: xxxxxx</p>
+                    <p ng-class="{'note--margin' : evaluacion.nota}" ><strong>Presentación:</strong> {{evaluacion.entrega}}</p>
+                    <p ng-class="{'note--margin' : evaluacion.nota}" ng-if="evaluacion.descripcion"><strong>Descripción:</strong> {{evaluacion.descripcion}}</p>
+                    <p ng-class="{'note--margin' : evaluacion.nota}" ng-if="evaluacion.observaciones"><strong>Observaciones Nota:</strong> {{evaluacion.observaciones}}</p>
                   </div>
-                  <div class="a-subject__score">8.5</div>
+                  <div ng-if="evaluacion.nota" class="a-subject__score">{{evaluacion.nota}}</div>
 
               </div>
             </div>
@@ -171,9 +174,9 @@
 
       </div>
 
-      <div>
+      <!--div>
         <h2 class="a-text_promedio-total">Promedio Total: 8.5</h2>
-      </div>
+      </div-->
 
       </div>
     </div>

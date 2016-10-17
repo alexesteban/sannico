@@ -49,8 +49,9 @@
         <a href="#/perfil_edit/{{alumno.guid}}">
         <div class="a-list__alumn">
             <div class="a-list__photo">
-              <i ng-if="alumno.genero == 'M' " class="flaticon-boy-broad-smile"></i>
-              <i ng-if="alumno.genero == 'F' " class="flaticon-smiling-girl"></i>
+              <i ng-if="alumno.genero == 'M' && !alumno.avatar " class="flaticon-boy-broad-smile"></i>
+              <i ng-if="alumno.genero == 'F' && !alumno.avatar " class="flaticon-smiling-girl"></i>
+              <img style="width: 36px; border-radius: 50%; margin: 2px;"  ng-if="alumno.avatar" ng-src="{{alumno.avatar}}" />
             </div>
             <div class="a-list__name">
               {{alumno.nombres}} {{alumno.apellidos}}

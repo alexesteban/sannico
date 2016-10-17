@@ -1,6 +1,6 @@
  <div class="a-section">
   <div class="a-title__internal">
-    DASHBOARD {{rol}}
+    DASHBOARD
   </div>
 </div>
 
@@ -237,32 +237,36 @@
   <!-- FATHERS -->
 
     <!-- CARD -->
-    <div class="a-card a-card__flex" ng-if="rol == 4">
-      <a href="#/publicaciones_adm">
-      <div class="a-card-wrapper">
-        <div class="a-card-header">
-          <div class="a-card-header__title-photo">
-            <h1>Hector Iván Rodrigues Castro</h1>
+    <div ng-if="rol == 4" style="width:100%">
+      <div ng-init="students()" class="a-card__flex-wrapper">
+        <div class="a-card a-card__flex" ng-repeat="alumno in alumnos">
+          <a href="#/perfil_edit/{{alumno.guid}}">
+          <div class="a-card-wrapper">
+            <div class="a-card-header">
+              <div class="a-card-header__title-photo">
+                <h1>{{alumno.nombres}} {{alumno.apellidos}}</h1>
+              </div>
+            </div>
           </div>
+          <div class="a-card-wrapper">
+            <div class="a-card-body a-card__flex-wrapper">
+              <div class="a-card__icon">
+                    <i ng-if="alumno.genero == 'M' && !alumno.avatar " class="flaticon-boy-broad-smile"></i>
+                    <i ng-if="alumno.genero == 'F' && !alumno.avatar " class="flaticon-smiling-girl"></i>
+                    <img style="width: 90px; border-radius: 50%;"  ng-if="alumno.avatar" ng-src="{{alumno.avatar}}" />
+              </div>
+              <div class="a-card__list">
+                <ul>
+                  <li>{{alumno.nacimiento}} Años</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          </a>
         </div>
       </div>
-      <div class="a-card-wrapper">
-        <div class="a-card-body a-card__flex-wrapper">
-          <div class="a-card__icon">
-                <i class="flaticon-smiling-girl"></i>
-          </div>
-          <div class="a-card__list">
-            <ul>
-              <li>12 Años</li>
-              <li>7° Grado</li>
-              <li>0 Fallas</li>
-              <li>4.2 en Promedio</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </a>
     </div>
+
     <!-- END CARD -->
 
   <!-- /FATHERS -->

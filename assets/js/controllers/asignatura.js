@@ -1,5 +1,8 @@
-app.controller('asignaturaCtrl', ['$scope','$mdMedia','$mdDialog','person',
-function ($scope,$mdMedia,$mdDialog,person) {
+app.controller('asignaturaCtrl', ['$scope','$mdMedia','$mdDialog','person','$routeParams','$http',
+function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
+
+  $scope.idAsignatura = $routeParams.idAsignatura;
+  $scope.guidAlumno = $routeParams.guidAlumno;
 
   $scope.openMenu = function($mdOpenMenu, ev) {
     originatorEv = ev;
@@ -16,11 +19,29 @@ function ($scope,$mdMedia,$mdDialog,person) {
      clickOutsideToClose:true
    })
    .then(function(answer) {
-     $scope.status = 'You said the information was "' + answer + '".';
+     $scope.initInfo();
    }, function() {
-     $scope.status = 'You cancelled the dialog.';
+     $scope.initInfo();
    });
  };
 
+ $scope.initInfo = function(){
+   $http.post("servicios/readAsignaturaByStudent.php", {'idAsignatura': $scope.idAsignatura, 'guidAlumno': $scope.guidAlumno})
+     .success(function(data){
+       if (data.error) {
+         $scope.error = data.error;
+       }else{
+         $scope.avatarAlumno = data.avatarAlumno;
+         $scope.generoAlumno = data.generoAlumno;
+         $scope.nombresAlumno = data.nombresAlumno;
+         $scope.cursoAlumno = data.cursoAlumno;
+         $scope.nombreAsignatura = data.nombreAsignatura;
+         $scope.tareas = data.tareas;
+         $scope.evaluaciones = data.evaluaciones;
+       }
+     });
+ };
+
+ $scope.initInfo();
 
 }]);

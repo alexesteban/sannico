@@ -1,5 +1,5 @@
-app.controller('perfilEditCtrl', ['$scope','$routeParams','$http','person','$mdDialog',
-function ($scope,$routeParams,$http,person,$mdDialog) {
+app.controller('perfilEditCtrl', ['$scope','$routeParams','$http','person','$mdDialog','$timeout','$cookies',
+function ($scope,$routeParams,$http,person,$mdDialog,$timeout,$cookies) {
 
   $scope.guid = $routeParams.guid;
 
@@ -11,6 +11,18 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
       "name" : "C.C."
     }
   ];
+
+  $scope.getRolSession = function() {
+    $http.post("servicios/rol.php", {'guid': $cookies.get('logued')})
+      .success(function(respuesta){
+
+        $scope.rolSession = respuesta[0].rol;
+
+      })
+      .error(function(){
+        $scope.rol = 0;
+    });
+  };
 
   $scope.initPerson = function() {
     /*Data favoritos*/
@@ -36,6 +48,7 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
           $scope.curso = data.curso;
           $scope.grado = data.grado;
           $scope.codigo = data.codigo;
+          $scope.myCroppedImage='';
         }
 
       })
@@ -94,6 +107,22 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
     });
   };
 
+  $scope.initAcademicAlumno = function() {
+    $http.post("servicios/readAsignaturasByAlumno.php", {'guid': $scope.guid })
+      .success(function(data){
+
+        if (data.error) {
+          $scope.error = data.error;
+        }else{
+          $scope.asignaturas = data;
+        }
+
+      })
+      .error(function(){
+        $scope.error = "Error: No hay Datos" ;
+    });
+  };
+
   $scope.initLaboralAd = function() {
     $http.post("servicios/readLaboralAdults.php", {'guid': $scope.guid })
       .success(function(data){
@@ -141,9 +170,11 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
     });
   };
 
+    $scope.getRolSession();
     $scope.initPerson();
     $scope.initAcudientes();
     $scope.initAcademicAd();
+    $scope.initAcademicAlumno();
     $scope.initLaboralAd();
     $scope.initInfoMedica();
     $scope.initAlumnos();
@@ -310,5 +341,46 @@ function ($scope,$routeParams,$http,person,$mdDialog) {
     };
 
 
+/* CHANGE AVATAR */
+          $scope.myImage='';
+          $scope.myCroppedImage='';
+
+           var handleFileSelect=function(evt) {
+             var file=evt.currentTarget.files[0];
+             var reader = new FileReader();
+             reader.onload = function (evt) {
+               $scope.$apply(function($scope){
+                 $scope.myImage=evt.target.result;
+               });
+             };
+             reader.readAsDataURL(file);
+
+             $scope.updAvatar();
+
+           };
+           angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+/* END CHANGE AVATAR */
+
+
+$scope.updAvatar = function() {
+  $timeout(function () {
+
+    $http.post("servicios/updAvatar.php", {'avatar': $scope.myCroppedImage,'guid': $scope.guid})
+    .success(function(respuesta){
+      if (respuesta) {
+        if (respuesta.error) {
+          $scope.avError = respuesta.error;
+        }else{
+          $scope.avError = "";
+          $scope.avSucces = "Has actualizado tu Avatar";
+          $scope.callAvatar();
+        }
+      }else{
+        $scope.avError = "No se actualizaron los Datos" ;
+      }
+    });
+
+  }, 500);
+};
 
 }]);

@@ -2,12 +2,18 @@ app.controller('appCtrl', ['$scope','$http','$cookies', '$location','auth',
   function($scope,$http,$cookies,$location,auth) {
     $scope.loggedIn = $cookies.get('logued');
 
-    $scope.logued = function(){
+    $scope.logued = function(rol){
       $scope.loggedIn = $cookies.get('logued');
       $scope.callAvatar();
       $scope.callRol();
       auth.setAuth($scope.loggedIn);
-      $location.path('/dashboard/' + $scope.loggedIn );
+
+      if (rol === '3') {
+        $location.path('/perfil_edit/' + $scope.loggedIn );
+      }else {
+        $location.path('/dashboard/' + $scope.loggedIn );
+      }
+
     };
 
     $scope.logout = function(){

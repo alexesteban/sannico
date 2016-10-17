@@ -49,7 +49,7 @@ function($routeProvider) {
     templateUrl: 'views/alumnos.html',
     controller: 'alumnosCtrl'
   }).
-  when('/asignatura/:idAsignatura/:idAlumno', {
+  when('/asignatura/:idAsignatura/:guidAlumno', {
     templateUrl: 'views/asignatura.html',
     controller: 'asignaturaCtrl'
   }).
@@ -65,9 +65,17 @@ function($routeProvider) {
     templateUrl: 'views/asignaturas_adm.html',
     controller: 'asignaturasAdmCtrl'
   }).
-  when('/calificar/:id', {
-    templateUrl: 'views/calificar.html',
-    controller: 'calificarCtrl'
+  when('/calificar-tarea/:idTarea', {
+    templateUrl: 'views/calificar-tarea.html',
+    controller: 'calificarTareaCtrl'
+  }).
+  when('/calificar-evaluacion/:idEvaluacion', {
+    templateUrl: 'views/calificar-evaluacion.html',
+    controller: 'calificarEvaluacionCtrl'
+  }).
+  when('/calificar-promedio/:idAsignatura', {
+    templateUrl: 'views/calificar-promedio.html',
+    controller: 'calificarPromedioCtrl'
   }).
   when('/acudientes', {
     templateUrl: 'views/acudientes.html',

@@ -5,8 +5,12 @@
 	$data = json_decode(file_get_contents("php://input"));
 	$guid_father = mysqli_real_escape_string($conn, $data->guid_father);
 
-	$result = $conn->query("SELECT * FROM users U LEFT OUTER JOIN alumns_by_father AF ON U.guid = AF.guid_student
-  WHERE U.rol = 3 AND (AF.guid_father IS NULL OR (AF.guid_father != '$guid_father' AND AF.guid_student != U.guid) )");
+	$result = $conn->query("SELECT * FROM users U
+													WHERE U.rol = 3
+													AND U.guid NOT IN (
+														SELECT FS.guid_student FROM fathers_by_student FS
+														WHERE FS.guid_father = '$guid_father')");
+
 
 	$miArray = array();
 	while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
