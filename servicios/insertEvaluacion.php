@@ -10,8 +10,13 @@
   $porcentaje = mysqli_real_escape_string($conn, $data->porcentaje);
   $publica = mysqli_real_escape_string($conn, $data->publica);
 
+	//GET ACTUAL PERIODO
+	$periodoResult = $conn->query("SELECT actual_periodo FROM contenido WHERE id = 1");
+	while ($row = $periodoResult->fetch_array(MYSQLI_ASSOC)) {
+			$actual_periodo = $row["actual_periodo"];
+	}
 
-	$query = "INSERT INTO evaluaciones (titulo,descripcion,entrega,porcentaje,publica,id_asignatura)	VALUES ('$titulo','$descripcion','$entrega','$porcentaje','$publica',$idAsignatura)";
+	$query = "INSERT INTO evaluaciones (titulo,descripcion,entrega,porcentaje,publica,id_asignatura,actual_periodo)	VALUES ('$titulo','$descripcion','$entrega','$porcentaje','$publica',$idAsignatura,$actual_periodo)";
   $result = $conn->query($query);
 
 	$conn->close();

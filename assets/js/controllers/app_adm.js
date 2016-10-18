@@ -6,8 +6,7 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
     $mdOpenMenu(ev);
   };
 
-  $scope.edit = function(ev,$tipo) {
-  person.setPerson($tipo);
+  $scope.addPeriodo = function(ev) {
    $mdDialog.show({
      controller: 'addPeriodoCtrl',
      templateUrl: 'views/add_periodo.html',
@@ -16,9 +15,9 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
      clickOutsideToClose:true
    })
    .then(function(answer) {
-     $scope.status = 'You said the information was "' + answer + '".';
+      $scope.initPeriodos();
    }, function() {
-     $scope.status = 'You cancelled the dialog.';
+      $scope.initPeriodos();
    });
  };
 
@@ -35,12 +34,26 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
          $scope.vision = data.vision;
          $scope.servicios = data.servicios;
          $scope.year = data.year;
+         $scope.actual_periodo = data.actual_periodo;
        }
 
      })
      .error(function(){
        $scope.error = "Error: No hay Datos" ;
    });
+
+ };
+
+ $scope.initPeriodos = function(){
+   $scope.errorCont = "";
+   $http.post("servicios/readPeriodos.php")
+     .success(function(data){
+       if (data.error) {
+         $scope.errorCont = data.error;
+       }else{
+         $scope.periodos = data;
+       }
+     });
 
  };
 
@@ -61,6 +74,7 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
  };
 
  $scope.initContenido();
+ $scope.initPeriodos();
 
  $scope.updYear = function(){
    $http.post("servicios/updYear.php", {"year": $scope.year})
@@ -73,6 +87,41 @@ function ($scope,$mdMedia,$mdDialog,person,$http) {
      });
  };
 
+ $scope.updPeridoo = function(){
+   $http.post("servicios/updPeriodo.php", {"actual_periodo": $scope.actual_periodo})
+     .success(function(data){
+       if (data.error) {
+         $scope.errorCont = data.error;
+       }else{
+         $scope.successPeriodo = "Los Datos se actualizaron correctamente";
+       }
+     });
+ };
 
+ $scope.deletePeriodo = function(ev,id) {
+   // Appending dialog to document.body to cover sidenav in docs app
+     var confirm = $mdDialog.confirm()
+           .title('Quieres Eliminar el periodo?')
+           .textContent('Si lo eliminas, podrán generarse inconsistencias en las notas y ponderados')
+           .ariaLabel('Lucky day')
+           .targetEvent(ev)
+           .ok('ELIMINAR')
+           .cancel('CANCELAR');
+     $mdDialog.show(confirm).then(function() {
+
+
+       $http.post("servicios/deletePeriodo.php", {"id": id})
+         .success(function(data){
+           if (data.error) {
+             $scope.errorCont = data.error;
+           }else{
+             $scope.initPeriodos();
+           }
+         });
+
+     }, function() {
+
+     });
+ };
 
 }]);

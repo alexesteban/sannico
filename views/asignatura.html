@@ -56,22 +56,11 @@
       <div class="a-panel-right tab-content a-card__flex">
 
         <div role="tabpanel" class="tab-pane active" id="tareas">
-
-          <div class="row">
+        <div class="a-peril__title-info">{{periodo}}</div>
+          <div class="row a-card-block">
             <!-- Alumns Academic -->
-            <div class="col-sm-4" ng-repeat="tarea in tareas">
+            <div class="col-sm-4 a-card-block__panel" ng-repeat="tarea in tareas">
               <div class="a-subject">
-
-                <!--md-menu>
-                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-                  <i class="flaticon-show-more-button-with-three-dots"></i>
-                  </md-button>
-                  <md-menu-content>
-                    <md-menu-item>
-                        <md-button ng-click="edit($event,'nota')"><i class="flaticon-edit"></i>  Editar</md-button>
-                    </md-menu-item>
-                  </md-menu-content>
-                </md-menu-->
 
                   <div class="a-subject__header">
                     <div class="a-subject__name">
@@ -93,22 +82,11 @@
         </div>
 
         <div role="tabpanel" class="tab-pane" id="evaluaciones">
-
-          <div class="row">
+          <div class="a-peril__title-info">{{periodo}}</div>
+          <div class="row a-card-block">
             <!-- Alumns Academic -->
-            <div class="col-sm-4" ng-repeat="evaluacion in evaluaciones" >
+            <div class="col-sm-4 a-card-block__panel" ng-repeat="evaluacion in evaluaciones" >
               <div class="a-subject">
-
-                <!--md-menu>
-                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-                  <i class="flaticon-show-more-button-with-three-dots"></i>
-                  </md-button>
-                  <md-menu-content>
-                    <md-menu-item>
-                        <md-button ng-click="edit($event,'nota')"><i class="flaticon-edit"></i>  Editar</md-button>
-                    </md-menu-item>
-                  </md-menu-content>
-                </md-menu-->
 
                   <div class="a-subject__header">
                     <div class="a-subject__name">
@@ -174,9 +152,9 @@
 
       </div>
 
-      <!--div>
-        <h2 class="a-text_promedio-total">Promedio Total: 8.5</h2>
-      </div-->
+      <div>
+        <h2 class="a-text_promedio-total">Promedio Total: {{promedio}}</h2>
+      </div>
 
       </div>
     </div>

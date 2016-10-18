@@ -15,22 +15,26 @@
           </div>
         </div>
         <div class="row-fluid a-row-fix">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <md-datepicker ng-model="entrega" md-placeholder="Fecha entrega"></md-datepicker>
           </div>
+          <div class="col-sm-6">
+              <br>
+              <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publica">publicar</md-switch>
+          </div>
 
-          <!--div class="col-sm-6">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Porcentaje</label>
-              <input >
-            </md-input-container>
-          </div-->
         </div>
 
         <div class="row-fluid a-row-fix">
           <div class="col-sm-6">
-              <br>
-              <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publica">publicar</md-switch>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Porcentaje</label>
+              <input type="number" ng-model="porcentaje" step="0.01" >
+            </md-input-container>
+          </div>
+          <div class="col-sm-6">
+            <br>
+            Disponible: <strong style="font-size:16px" class="a-state" ng-class="{'inactive' : (porcentajeDisponible - porcentaje) < 0}" >{{porcentajeDisponible - porcentaje}}%</strong>
           </div>
         </div>
 
@@ -45,12 +49,13 @@
 
     </div>
     <div class="a-modal__footer">
+      <div ng-if="error" class="alert alert-danger" role="alert" timeout>{{error}}</div>
       <button class="a-button button--color-violet" type="submit">
         CREAR
       </button>
-      <button class="a-button button--color-silver" ng-click="cancel()">
+      <a class="a-button button--color-silver" ng-click="cancel()">
         CANCELAR
-      </button>
+      </a>
     </div>
   </form>
 </md-dialog>

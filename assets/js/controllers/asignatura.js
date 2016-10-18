@@ -36,6 +36,7 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
          $scope.nombresAlumno = data.nombresAlumno;
          $scope.cursoAlumno = data.cursoAlumno;
          $scope.nombreAsignatura = data.nombreAsignatura;
+         $scope.periodo = data.periodo;
          $scope.tareas = data.tareas;
          $scope.evaluaciones = data.evaluaciones;
        }
@@ -43,5 +44,18 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
  };
 
  $scope.initInfo();
+
+ $scope.getPromedio = function(){
+   $http.post("servicios/readPromedio.php", {'idAsignatura': $scope.idAsignatura, 'guidAlumno': $scope.guidAlumno})
+     .success(function(data){
+       if (data.error) {
+         $scope.error = data.error;
+       }else{
+         $scope.promedio = parseFloat(data.promedio).toFixed(1);
+       }
+     });
+ };
+
+ $scope.getPromedio();
 
 }]);

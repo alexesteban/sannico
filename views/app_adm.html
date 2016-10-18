@@ -173,7 +173,64 @@
 
       <div role="tabpanel" class="tab-pane" id="periodos">
 
+        <div class="a-peril__title-info">Periodos Académicos</div>
+
+        <div class="row">
+          <div class="col-sm-4">
+
+            <div class="a-subject a-subject--create">
+              <a href="javascript:void(0)" ng-click="addPeriodo($event)">
+                <i class="flaticon-plus"></i>
+                Crear Periodo Académico
+              </a>
+            </div>
+
+            <div class="a-subject" ng-repeat="periodo in periodos">
+              <md-menu>
+                <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                <i class="flaticon-show-more-button-with-three-dots"></i>
+                </md-button>
+                <md-menu-content>
+                  <md-menu-item>
+                    <md-button ng-click="deletePeriodo($event,periodo.id)"><i class="flaticon-delete-button"></i> Eliminar</md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+              <div class="a-subject__name">
+                {{periodo.nombre_periodo}}
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-8">
+            <form ng-submit="updPeridoo()">
+              <md-input-container class="md-block">
+                <label>Periodo Actual</label>
+                <md-select ng-model="actual_periodo">
+                  <md-option ng-repeat="periodo in periodos" value="{{periodo.id}}" >
+                    {{periodo.nombre_periodo}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <br>
+              <div class="text-center">
+                <button class="a-button button--color-violet a-text--uppercase" type="submit">
+                  ACTUALIZAR PERIODO
+                </button>
+              </div>
+              <div ng-if="successPeriodo" class="alert alert-success" role="success" timeout>{{successPeriodo}}</div>
+            </form>
+          </div>
+
+        </div>
+
+        <hr>
+
       <form ng-submit="updYear()">
+
+        <div class="a-peril__title-info">Año Académico</div>
+
         <div class="a-peril__title-info">
           <md-input-container >
             <label>Año Actual</label>
@@ -187,7 +244,7 @@
 
         <div class="text-center">
           <button class="a-button button--color-violet a-text--uppercase" type="submit">
-            ACTUALIZAR
+            ACTUALIZAR AÑO
           </button>
         </div>
       </form>
@@ -222,49 +279,7 @@
 
         <hr>
 
-        <!--div class="a-peril__title-info">Periodos Académicos</div>
 
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="a-subject a-subject--create">
-              <a href="javascript:void(0)" ng-click="edit($event,'Crear')">
-                <i class="flaticon-plus"></i>
-                Crear Periodo Académico
-              </a>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="a-subject">
-              <md-menu>
-                <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-                <i class="flaticon-show-more-button-with-three-dots"></i>
-                </md-button>
-                <md-menu-content>
-                  <md-menu-item>
-                      <md-button ng-click="edit($event,'Editar')"><i class="flaticon-edit"></i>  Editar</md-button>
-                  </md-menu-item>
-                  <md-menu-item>
-                    <md-button ng-click="delete()"><i class="flaticon-delete-button"></i> Eliminar</md-button>
-                  </md-menu-item>
-                </md-menu-content>
-              </md-menu>
-                <div class="a-subject__header">
-                  <div class="a-subject__name">
-                    Periodo 1
-                  </div>
-                </div>
-                <div class="a-subject__failure">
-                  <p>Empieza: 2016-03-11</p>
-                  <p>Termina: 2016-03-11</p>
-                  <p>
-                    <md-switch class="md-primary" md-no-ink aria-label="publicada" ng-model="publicado">Activo</md-switch>
-                  </p>
-                </div>
-            </div>
-          </div>
-
-        </div-->
 
       </div>
 

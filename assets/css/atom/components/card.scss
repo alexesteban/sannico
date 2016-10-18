@@ -196,3 +196,15 @@
   text-align: left;
   color: $gray-medium;
 }
+
+.a-card-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.a-card-block__panel {
+  display: flex;
+  .a-subject {
+    width: 100%;
+  }
+}

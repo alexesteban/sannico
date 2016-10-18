@@ -26,10 +26,20 @@
       $DBguid_docente = $row["guid_docente"];
   }
 
+  //GET PERIODOS DATA
+  $periodoResult = $conn->query("SELECT P.id, P.nombre_periodo FROM contenido C
+                          INNER JOIN periodos P ON C.actual_periodo = P.id
+                          WHERE C.id = 1");
+
+  while ($row = $periodoResult->fetch_array(MYSQLI_ASSOC)) {
+                              $idPeriodo = $row["id"];
+                              $actualPeriodo = $row["nombre_periodo"];
+                          }
+
   //GET TAREAS
 	$resultTareas = $conn->query("SELECT * FROM tareas T
                                 LEFT JOIN calificaciones_tareas CT ON CT.id_tarea = T.id AND CT.guid_alumno = '$guidAlumno'
-                                WHERE T.id_asignatura = $idAsignatura AND T.publica = 1");
+                                WHERE T.id_asignatura = $idAsignatura AND T.publica = 1 AND actual_periodo = $idPeriodo");
   $arrayTareas = array();
   while($rs = $resultTareas->fetch_array(MYSQLI_ASSOC)) {
       $arrayTareas[] = $rs;
@@ -38,7 +48,7 @@
   //GET EVALUACIONES
 	$resultEvaluaciones = $conn->query("SELECT * FROM evaluaciones E
                                       LEFT JOIN calificaciones_evaluaciones CE ON CE.id_evaluacion = E.id AND CE.guid_alumno = '$guidAlumno'
-                                      WHERE E.id_asignatura = $idAsignatura AND E.publica = 1");
+                                      WHERE E.id_asignatura = $idAsignatura AND E.publica = 1 AND actual_periodo = $idPeriodo");
   $arrayEvaluaciones = array();
   while($rs = $resultEvaluaciones->fetch_array(MYSQLI_ASSOC)) {
       $arrayEvaluaciones[] = $rs;
@@ -50,6 +60,7 @@
   $obj->nombresAlumno = $nombresAlumno;
   $obj->cursoAlumno = $cursoAlumno;
   $obj->nombreAsignatura = $nombreAsignatura;
+  $obj->periodo = $actualPeriodo;
   $obj->tareas = $arrayTareas;
   $obj->evaluaciones = $arrayEvaluaciones;
 

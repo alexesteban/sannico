@@ -112,6 +112,17 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
       });
   };
 
+  $scope.readPeridoActual = function() {
+    $http.post("servicios/readActualPeriodo.php")
+      .success(function(data){
+        if (data.error) {
+          $scope.error = data.error;
+        }else{
+          $scope.actualPeriodo = data.actualPeriodo;
+        }
+      });
+  };
+
   $scope.initTareas = function() {
     $http.post("servicios/readTareas.php", {'id': $scope.idAsignatura})
       .success(function(data){
@@ -163,6 +174,7 @@ function ($scope,$mdMedia,$mdDialog,person,$routeParams,$http) {
   $scope.readAsignatura();
   $scope.initTareas();
   $scope.initEvaluaciones();
+  $scope.readPeridoActual();
 
   $scope.updPublica = function(idTarea,state){
     if (state === true) {state = 1;}else{state = 0;}

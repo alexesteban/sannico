@@ -12,9 +12,9 @@
         <span>{{asignatura}}</span>
         <span class="a-card__grade">Curso {{curso}}°</span>
       </div>
-      <div class="a-card__flex a-title-icon text-right">
+      <!--div class="a-card__flex a-title-icon text-right">
         <a class="a-button button--color-violet a-text--uppercase" href="#/calificar-promedio/{{idAsignatura}}"> PROMEDIOS </a>
-      </div>
+      </div-->
     </div>
 
   </div>
@@ -41,14 +41,14 @@
             </div>
           </div>
 
-          <!--md-input-container ng-if="state == 'Ac'" class="md-block">
-            <label>Periodo Académico</label>
-            <md-select ng-model="myModel" required>
+          <md-input-container ng-if="state == 'Ac'" class="md-block">
+            <label>Periodo Académico: {{actualPeriodo}}</label>
+            <!--md-select ng-model="myModel" required>
               <md-option value="1">Periodo 1</md-option>
               <md-option value="2">Periodo 2</md-option>
               <md-option value="3">Periodo 3</md-option>
-            </md-select>
-          </md-input-container-->
+            </md-select-->
+          </md-input-container>
 
         </div>
         <div class="col-sm-6">
@@ -134,7 +134,7 @@
                     <p ng-if="tarea.calificable != 0" class="a-state active"> Calificable </p>
                     <p ng-if="tarea.calificable == 0" class="a-state inactive"> No Calificable </p>
                   </div>
-                  <!--div ng-if="tarea.calificable != 0" class="a-subject__score">{{tarea.porcentaje}}%</div-->
+                  <div ng-if="tarea.calificable != 0" class="a-subject__score">{{tarea.porcentaje}}%</div>
               </div>
             </div>
             <!-- End Alumns Academic -->
@@ -188,7 +188,7 @@
                     </p>
                     <br>
                   </div>
-                  <!--div class="a-subject__score">15%</div-->
+                  <div class="a-subject__score">{{evaluacion.porcentaje}}%</div>
               </div>
             </div>
             <!-- End Alumns Academic -->

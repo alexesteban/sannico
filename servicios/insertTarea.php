@@ -11,8 +11,13 @@
   $publica = mysqli_real_escape_string($conn, $data->publica);
   $calificable = mysqli_real_escape_string($conn, $data->calificable);
 
+	//GET ACTUAL PERIODO
+  $periodoResult = $conn->query("SELECT actual_periodo FROM contenido WHERE id = 1");
+  while ($row = $periodoResult->fetch_array(MYSQLI_ASSOC)) {
+      $actual_periodo = $row["actual_periodo"];
+  }
 
-	$query = "INSERT INTO tareas (titulo,descripcion,entrega,porcentaje,publica,calificable,id_asignatura)	VALUES ('$titulo','$descripcion','$entrega','$porcentaje','$publica','$calificable',$idAsignatura)";
+	$query = "INSERT INTO tareas (titulo,descripcion,entrega,porcentaje,publica,calificable,id_asignatura,actual_periodo)	VALUES ('$titulo','$descripcion','$entrega','$porcentaje','$publica','$calificable',$idAsignatura,$actual_periodo)";
   $result = $conn->query($query);
 
 	$conn->close();
