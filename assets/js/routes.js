@@ -101,6 +101,10 @@ function($routeProvider) {
     templateUrl: 'views/app_adm.html',
     controller: 'appAdmCtrl'
   }).
+  when('/publicaciones_adm', {
+    templateUrl: 'views/publicaciones_adm.html',
+    controller: 'publicacionesAdmCtrl'
+  }).
   otherwise({
     redirectTo: '/'
   });

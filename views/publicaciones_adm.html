@@ -1,0 +1,45 @@
+<div class="a-section">
+  <div class="a-title__internal">
+    PUBLICACIONES
+    <a ng-if="rol == 2" class="a-btn__add" href ng-click="addPublicacion($event,guid)" >
+      <i class="flaticon-plus"></i>  AGREGAR
+    </a>
+  </div>
+</div>
+
+<div class="a-section">
+  <div class="a-card__flex-wrapper">
+
+  <!-- CARD -->
+    <div class="a-card a-card__flex" ng-repeat="publicacion in publicaciones">
+
+        <div class="a-card-wrapper">
+          <div class="a-card-header">
+            <div class="a-card-header__title-photo">
+              <h1 class="light">{{publicacion.titulo}}</h1>
+            </div>
+            <md-menu>
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+            <i class="flaticon-show-more-button-with-three-dots"></i>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="editPublicacion($event,publicacion.id)"><i class="flaticon-edit"></i>  Editar</md-button>
+              </md-menu-item>
+              <md-menu-item ng-if="rol == 2">
+                <md-button ng-click="deletePublicacion($event,publicacion.id)"><i class="flaticon-delete-button"></i>Eliminar</md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+          </div>
+        </div>
+        <div class="a-card-wrapper">
+          <p class="a-card__description">{{publicacion.descripcion}}</p>
+        </div>
+
+    </div>
+  <!-- END CARD -->
+
+
+  </div>
+</div>
